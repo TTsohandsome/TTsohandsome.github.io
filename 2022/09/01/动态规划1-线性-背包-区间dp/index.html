@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="主要是记录牛客专题的dp基础题（都是一些比较典的题目） 由于我dp很烂，所以先从最简单的开始">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【专题】动态规划1 线性&#x2F;背包&#x2F;区间dp">
+<meta property="og:url" content="http://example.com/2022/09/01/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%921-%E7%BA%BF%E6%80%A7-%E8%83%8C%E5%8C%85-%E5%8C%BA%E9%97%B4dp/index.html">
+<meta property="og:site_name" content="Sakana~">
+<meta property="og:description" content="主要是记录牛客专题的dp基础题（都是一些比较典的题目） 由于我dp很烂，所以先从最简单的开始">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/pic/91.png">
+<meta property="og:image" content="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/%60UNU3R5H3666_4J_MA6WV%40G.png">
+<meta property="article:published_time" content="2022-09-01T07:58:28.000Z">
+<meta property="article:modified_time" content="2022-09-01T12:48:56.624Z">
+<meta property="article:author" content="cting">
+<meta property="article:tag" content="动态规划dp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.luogu.com.cn/upload/pic/91.png">
+
+<link rel="canonical" href="http://example.com/2022/09/01/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%921-%E7%BA%BF%E6%80%A7-%E8%83%8C%E5%8C%85-%E5%8C%BA%E9%97%B4dp/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>【专题】动态规划1 线性/背包/区间dp | Sakana~</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/custom_css_source.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Sakana~</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-school-flag fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-satellite-dish fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tower-cell fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fish fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-jet-fighter-up fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-seedling fa-fw"></i>日程表</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+<!-- 点击特效 -->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+<script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+<!-- 阅读进度条 -->
+<div class="top-scroll-bar"></div>
+
+
+
+<!-- 网易云 -->
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1939401645&auto=1&height=66"></iframe>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/01/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%921-%E7%BA%BF%E6%80%A7-%E8%83%8C%E5%8C%85-%E5%8C%BA%E9%97%B4dp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s2.loli.net/2022/08/29/YyF3NStnorTxIUd.png">
+      <meta itemprop="name" content="cting">
+      <meta itemprop="description" content="Sakana~~~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sakana~">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【专题】动态规划1 线性/背包/区间dp
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-09-01 15:58:28 / 修改时间：20:48:56" itemprop="dateCreated datePublished" datetime="2022-09-01T15:58:28+08:00">2022-09-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM-%E4%B8%93%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">ACM 专题</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>主要是记录牛客专题的dp基础题（都是一些比较典的题目）</p>
+<p>由于我dp很烂，所以先从最简单的开始</p>
+<span id="more"></span>
+
+<h1 id="【专题】动态规划1-线性-x2F-背包-x2F-区间dp"><a href="#【专题】动态规划1-线性-x2F-背包-x2F-区间dp" class="headerlink" title="【专题】动态规划1 线性&#x2F;背包&#x2F;区间dp"></a>【专题】动态规划1 线性&#x2F;背包&#x2F;区间dp</h1><p>专题列表：<a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/24213">https://ac.nowcoder.com/acm/contest/24213</a></p>
+<p>（题目顺序随机，题目不全来自上述链接）</p>
+<p>（呃呃Latex显示还是有问题，懒得搞图片了，反正点链接也可以看）</p>
+<h2 id="P2331-SCOI-2005-最大子矩阵"><a href="#P2331-SCOI-2005-最大子矩阵" class="headerlink" title="P2331 [SCOI 2005]最大子矩阵"></a>P2331 [SCOI 2005]最大子矩阵</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2331">https://www.luogu.com.cn/problem/P2331</a></p>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>这里有一个n*m的矩阵，请你选出其中k个子矩阵，使得这个k个子矩阵分值之和最大。注意：选出的k个子矩阵不能相互重叠。</p>
+<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行为n,m,k（1≤n≤100,1≤m≤2,1≤k≤10），接下来n行描述矩阵每行中的每个元素的分值(每个元素的分值的绝对值不超过32767)。</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>只有一行为k个子矩阵分值之和最大为多少。</p>
+<h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3 2 2</span><br><span class="line">1 -3</span><br><span class="line">2 3</span><br><span class="line">-2 3</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">9</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>由于只有两列，因此可以分两种情况拆开考虑。</p>
+<p><strong>m &#x3D; 1</strong> 时，相当于求 <strong>k个最大连续字段</strong>，定义 <code>f1[i][j]</code> 表示 <code>前i个数中取j段</code>，转移则为：</p>
+<ul>
+<li>不取：<code>f1[i][k] = max (f1[i][k], f1[i-1][k]); </code></li>
+<li>取：枚举上一个点 <strong>j</strong>，<code>1[i][k] = max (f1[i][k], f1[j][k-1] + a[i] - a[j]);</code></li>
+</ul>
+<p><strong>m &#x3D; 2</strong> 时，相当于上述问题的拓展，则给 dp 数组多加一维，定义 <code>f2[i][j][k]</code> 表示 <code>左列前i个数,右列前j个数中取k个矩形</code>，转移则为：</p>
+<ul>
+<li>左右都不取：<code>f2[i][j][k] = max (f2[i-1][j][k], f2[i][j-1][k]);</code></li>
+<li>取左列：<code>f2[i][j][k] = max (f2[i][j][k], f2[l][j][k-1] + s1[i] - s1[l]);</code></li>
+<li>取右列：<code>f2[i][j][k] = max (f2[i][j][k], f2[i][l][k-1] + s2[j] - s2[l]);</code></li>
+<li>左右都取<strong>（前提是 i &#x3D;&#x3D; j）</strong>：<code>f2[i][j][k] = max (f2[i][j][k], f2[l][l][k-1] + s1[i] - s1[l] + s2[i] - s2[l]);</code></li>
+</ul>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">105</span>, M = <span class="number">15</span>;</span><br><span class="line"><span class="type">int</span> a[N], s1[N], s2[N], n, m, K;</span><br><span class="line"><span class="type">int</span> f1[N][M], f2[N][N][M]; </span><br><span class="line"><span class="comment">//f1:前i个数中取k个矩形; f2:左列前i个数,右列前j个数中取k个矩形</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m &gt;&gt; K;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//k个最大连续字段</span></span><br><span class="line">    <span class="keyword">if</span> (m == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)    cin &gt;&gt; a[i], a[i] += a[i<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">1</span>; k &lt;= K; k++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">                f1[i][k] = <span class="built_in">max</span> (f1[i][k], f1[i<span class="number">-1</span>][k]); <span class="comment">//不取</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; i; j++)     <span class="comment">//取</span></span><br><span class="line">                    f1[i][k] = <span class="built_in">max</span> (f1[i][k], f1[j][k<span class="number">-1</span>] + a[i] - a[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; f1[n][K];</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//m = 2</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">2</span>; j++) &#123;</span><br><span class="line">            <span class="type">int</span> x;  cin &gt;&gt; x;</span><br><span class="line">            <span class="keyword">if</span> (j == <span class="number">1</span>)     s1[i] = s1[i<span class="number">-1</span>] + x;</span><br><span class="line">            <span class="keyword">else</span>            s2[i] = s2[i<span class="number">-1</span>] + x;</span><br><span class="line">        &#125;  </span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">1</span>; k &lt;= K; k++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">                f2[i][j][k] = <span class="built_in">max</span> (f2[i<span class="number">-1</span>][j][k], f2[i][j<span class="number">-1</span>][k]); <span class="comment">//左右都不取</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> l = <span class="number">0</span>; l &lt; i; l++)    f2[i][j][k] = <span class="built_in">max</span> (f2[i][j][k], f2[l][j][k<span class="number">-1</span>] + s1[i] - s1[l]); <span class="comment">//取左</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> l = <span class="number">0</span>; l &lt; j; l++)    f2[i][j][k] = <span class="built_in">max</span> (f2[i][j][k], f2[i][l][k<span class="number">-1</span>] + s2[j] - s2[l]); <span class="comment">//取右</span></span><br><span class="line">                <span class="keyword">if</span> (i == j) &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="type">int</span> l = <span class="number">0</span>; l &lt; i; l++) &#123;</span><br><span class="line">                        f2[i][j][k] = <span class="built_in">max</span> (f2[i][j][k], f2[l][l][k<span class="number">-1</span>] + s1[i] - s1[l] + s2[i] - s2[l]);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;  <span class="comment">//左右都取  </span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; f2[n][n][K];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//枚举行,把第i行到第j行压成一行 -&gt; 单行求最大字串和</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="P1020-NOIP1999-普及组-导弹拦截"><a href="#P1020-NOIP1999-普及组-导弹拦截" class="headerlink" title="P1020 [NOIP1999 普及组] 导弹拦截"></a>P1020 [NOIP1999 普及组] 导弹拦截</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1020">https://www.luogu.com.cn/problem/P1020</a></p>
+<h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>某国为了防御敌国的导弹袭击，发展出一种导弹拦截系统。但是这种导弹拦截系统有一个缺陷：虽然它的第一发炮弹能够到达任意的高度，但是以后每一发炮弹都不能高于前一发的高度。某天，雷达捕捉到敌国的导弹来袭。由于该系统还在试用阶段，所以只有一套系统，因此有可能不能拦截所有的导弹。</p>
+<p>输入导弹依次飞来的高度，计算这套系统最多能拦截多少导弹，如果要拦截所有导弹最少要配备多少套这种导弹拦截系统。</p>
+<h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h3><p>一行，若干个整数，中间由空格隔开。</p>
+<h3 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h3><p>两行，每行一个整数，第一个数字表示这套系统最多能拦截多少导弹，第二个数字表示如果要拦截所有导弹最少要配备多少套这种导弹拦截系统。</p>
+<h3 id="样例输入-1-1"><a href="#样例输入-1-1" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">389 207 155 300 299 170 158 65</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1-1"><a href="#样例输出-1-1" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><p>对于前 $50%$ 数据（NOIP 原题数据），满足导弹的个数不超过 $2000$ 个。该部分数据总分共 $100$ 分。可使用$\mathcal O(n^2)$ 做法通过。<br>对于后 $50%$ 的数据，满足导弹的个数不超过 $10^5$ 个。该部分数据总分也为 $100$ 分。请使用 $\mathcal O(n\log n)$ 做法通过。</p>
+<p>对于全部数据，满足导弹的高度为正整数，且不超过 $5\times 10^4$。</p>
+<p>此外本题开启 spj，每点两问，按问给分。</p>
+<hr>
+<p>$\text{upd 2022.8.24}$：新增加一组 Hack 数据。</p>
+<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p><strong>重要性质：完整覆盖一个序列的不上升子序列的个数等于这个序列的最长上升子序列的长度</strong></p>
+<p>可以用反证法大致证明，（<strong>严格证明请参考偏序集的Dilworth定理</strong>）。</p>
+<p>所以问题转化为 求最长下降子序列的长度 和 求最长上升子序列的长度。</p>
+<p>直接暴力查找过不了，因为查找的区段内是有序的，所以可以使用二分。</p>
+<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> a[N], f[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n = <span class="number">0</span>, x;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; x) &#123;</span><br><span class="line">        a[++n] = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//最长下降子序列</span></span><br><span class="line">    f[<span class="number">1</span>] = a[<span class="number">1</span>];</span><br><span class="line">    <span class="type">int</span> cur = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i ++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (a[i] &lt;= f[cur])     f[++ cur] = a[i];</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="type">int</span> pos = <span class="built_in">upper_bound</span> (f + <span class="number">1</span>, f + cur + <span class="number">1</span>, a[i], <span class="built_in">greater</span>&lt;<span class="type">int</span>&gt;()) - (f); <span class="comment">//找到第一个小于的前一个</span></span><br><span class="line">            f[pos] = a[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; cur &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//最长上升子序列</span></span><br><span class="line">    f[<span class="number">1</span>] = a[<span class="number">1</span>];</span><br><span class="line">    cur = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i ++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (a[i] &gt; f[cur])     f[++ cur] = a[i];</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="type">int</span> pos = <span class="built_in">lower_bound</span> (f + <span class="number">1</span>, f + cur + <span class="number">1</span>, a[i]) - (f); </span><br><span class="line">            f[pos] = a[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; cur &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//重要性质:</span></span><br><span class="line"><span class="comment">//完整覆盖一个序列的不上升子序列的个数等于</span></span><br><span class="line"><span class="comment">//这个序列的最长上升子序列的长度</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//问题转化为:</span></span><br><span class="line"><span class="comment">//1. 求最长下降子序列的长度</span></span><br><span class="line"><span class="comment">//2. 求最长上升子序列的长度</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//优化:二分查找</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="P1091-NOIP2004-提高组-合唱队形"><a href="#P1091-NOIP2004-提高组-合唱队形" class="headerlink" title="P1091 [NOIP2004 提高组] 合唱队形"></a>P1091 [NOIP2004 提高组] 合唱队形</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1091">https://www.luogu.com.cn/problem/P1091</a></p>
+<h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>$n$ 位同学站成一排，音乐老师要请其中的 $n-k$ 位同学出列，使得剩下的 $k$ 位同学排成合唱队形。</p>
+<p>合唱队形是指这样的一种队形：设 $k$ 位同学从左到右依次编号为 $1,2,$ … $,k$，他们的身高分别为 $t_1,t_2,$ … $,t_k$，则他们的身高满足 $t_1&lt; \cdots <t_i>t_{i+1}&gt;$ … $&gt;t_k(1\le i\le k)$。</p>
+<p>你的任务是，已知所有 $n$ 位同学的身高，计算最少需要几位同学出列，可以使得剩下的同学排成合唱队形。</p>
+<h3 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h3><p>共二行。</p>
+<p>第一行是一个整数 $n$（$2\le n\le100$），表示同学的总数。</p>
+<p>第二行有 $n$ 个整数，用空格分隔，第 $i$ 个整数 $t_i$（$130\le t_i\le230$）是第 $i$ 位同学的身高（厘米）。</p>
+<h3 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h3><p>一个整数，最少需要几位同学出列。</p>
+<h3 id="样例输入-1-2"><a href="#样例输入-1-2" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">8</span><br><span class="line">186 186 150 200 160 130 197 220</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1-2"><a href="#样例输出-1-2" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+
+<h3 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h3><p>对于 $50%$ 的数据，保证有 $n \le 20$。</p>
+<p>对于全部的数据，保证有 $n \le 100$。</p>
+<h3 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h3><p>观察合唱队列，可以发现他是一个，先上升后下降的队形，所以可以<strong>左边求一次上升序列，右边求一次下降序列</strong>，然后找出最长的这个序列，则得最小的出队人数</p>
+<h3 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">105</span>;</span><br><span class="line"><span class="type">int</span> n, a[N], l[N], r[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)    cin &gt;&gt; a[i];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        l[i] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt; i; j ++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[j] &lt; a[i])    l[i] = <span class="built_in">max</span> (l[j] + <span class="number">1</span>, l[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = n; i &gt;= <span class="number">1</span>; i--) &#123;</span><br><span class="line">        r[i] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = n; j &gt; i; j --) &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[j] &lt; a[i])    r[i] = <span class="built_in">max</span> (r[j] + <span class="number">1</span>, r[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)    ans = <span class="built_in">max</span> (ans, l[i] + r[i] - <span class="number">1</span>);</span><br><span class="line">    cout &lt;&lt; n - ans &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//左边求一次上升序列，右边求一次下降序列</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="P-1282-多米诺骨牌"><a href="#P-1282-多米诺骨牌" class="headerlink" title="P 1282 多米诺骨牌"></a>P 1282 多米诺骨牌</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1282">https://www.luogu.com.cn/problem/P1282</a></p>
+<h3 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h3><p>多米诺骨牌由上下 $2$ 个方块组成，每个方块中有 $1\sim6$ 个点。现有排成行的上方块中点数之和记为 $S_1$，下方块中点数之和记为 $S_2$，它们的差为 $\left|S_1-S_2\right|$。如图，$S1&#x3D;6+1+1+1&#x3D;9$，$S2&#x3D;1+5+3+2&#x3D;11$，$\left|S_1-S_2\right|&#x3D;2$。每个多米诺骨牌可以旋转 $180°$，使得上下两个方块互换位置。请你计算最少旋转多少次才能使多米诺骨牌上下 $2$ 行点数之差达到最小。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/pic/91.png"></p>
+<p>对于图中的例子，只要将最后一个多米诺骨牌旋转 $180°$，即可使上下 $2$ 行点数之差为 $0$。</p>
+<h3 id="输入格式-3"><a href="#输入格式-3" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入文件的第一行是一个正整数 $n(1\leq n\leq 1000)$，表示多米诺骨牌数。接下来的 $n$ 行表示 $n$ 个多米诺骨牌的点数。每行有两个用空格隔开的正整数，表示多米诺骨牌上下方块中的点数 $a$ 和 $b$，且 $1\leq a,b\leq 6$。</p>
+<h3 id="输出格式-3"><a href="#输出格式-3" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出文件仅一行，包含一个整数。表示求得的最小旋转次数。</p>
+<h3 id="样例输入-1-3"><a href="#样例输入-1-3" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">6 1</span><br><span class="line">1 5</span><br><span class="line">1 3</span><br><span class="line">1 2</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1-3"><a href="#样例输出-1-3" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="分析-3"><a href="#分析-3" class="headerlink" title="分析"></a>分析</h3><p>易得朴素的 dp：<code>f[i][j]:前i个牌,上下差值为j</code>，转移方程为：</p>
+<p><code>f[i][j] = min (f[i-1][j-(a[i]-b[i])], f[i-1][j-(b[i]-a[i])]+1);</code></p>
+<p>但是差值可能为负数，所以偏移一下。</p>
+<p>*<em>最大差值为(6-1)<em>1000&#x3D;5000,所以偏移5000</em></em></p>
+<h3 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1005</span>, M = <span class="number">5000</span>*<span class="number">2</span> + <span class="number">5</span>, base = <span class="number">5000</span>; </span><br><span class="line"><span class="type">int</span> n, f[N][M], a[N], b[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="built_in">memset</span> (f, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> f);</span><br><span class="line">    f[<span class="number">0</span>][base] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i] &gt;&gt; b[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = -base; j &lt;= base; j++) &#123; <span class="comment">//注意此处是[-base,base]</span></span><br><span class="line">            f[i][j+base] = <span class="built_in">min</span> (f[i<span class="number">-1</span>][j-(a[i]-b[i])+base], f[i<span class="number">-1</span>][j-(b[i]-a[i])+base] + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> l, r;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= base; i++) &#123;</span><br><span class="line">        l = base + i, r = base - i;</span><br><span class="line">        <span class="keyword">if</span> ((f[n][l] != <span class="number">0x3f3f3f3f</span>) || (f[n][r] != <span class="number">0x3f3f3f3f</span>)) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="built_in">min</span> (f[n][l], f[n][r]) &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//f[i][j]:前i个牌,上下差值为j</span></span><br><span class="line"><span class="comment">//f[i][j] = min (f[i-1][j-(a[i]-b[i])], f[i-1][j-(b[i]-a[i])]+1);</span></span><br><span class="line"><span class="comment">//最大差值为(6-1)*1000=5000,所以偏移5000</span></span><br><span class="line"><span class="comment">//5000代表0</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Bitset-优化背包"><a href="#Bitset-优化背包" class="headerlink" title="Bitset 优化背包"></a>Bitset 优化背包</h2><p><a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/24213/1035">https://ac.nowcoder.com/acm/contest/24213/1035</a></p>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img src="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/%60UNU3R5H3666_4J_MA6WV%40G.png"></p>
+<h3 id="分析-4"><a href="#分析-4" class="headerlink" title="分析"></a>分析</h3><p>朴素转移：<code>f[i][j] |= f[i-1][j-x[i]*x[i]] = 1;</code></p>
+<p>对于这种一行可以表示为一个01串，且变化都是整体偏移的，可以使用 <strong>bitset</strong> 优化空间</p>
+<figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e6</span> + <span class="number">5</span>;</span><br><span class="line">bitset&lt;N&gt;f[<span class="number">105</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    f[<span class="number">0</span>][<span class="number">0</span>]= <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="type">int</span> l, r;</span><br><span class="line">        cin &gt;&gt; l &gt;&gt; r;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = l; j &lt;= r; j++) &#123;</span><br><span class="line">            f[i] |= f[i<span class="number">-1</span>] &lt;&lt; (j * j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[n].<span class="built_in">count</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//bitset优化,左移k^2</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="P1052-NOIP2005-提高组-过河"><a href="#P1052-NOIP2005-提高组-过河" class="headerlink" title="P1052 [NOIP2005 提高组] 过河"></a>P1052 [NOIP2005 提高组] 过河</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1052">https://www.luogu.com.cn/problem/P1052</a></p>
+<h3 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h3><p>在河上有一座独木桥，一只青蛙想沿着独木桥从河的一侧跳到另一侧。在桥上有一些石子，青蛙很讨厌踩在这些石子上。由于桥的长度和青蛙一次跳过的距离都是正整数，我们可以把独木桥上青蛙可能到达的点看成数轴上的一串整点：$0,1,\cdots,L$（其中 $L$ 是桥的长度）。坐标为 $0$ 的点表示桥的起点，坐标为 $L$ 的点表示桥的终点。青蛙从桥的起点开始，不停的向终点方向跳跃。一次跳跃的距离是 $S$ 到 $T$ 之间的任意正整数（包括 $S,T$）。当青蛙跳到或跳过坐标为 $L$ 的点时，就算青蛙已经跳出了独木桥。</p>
+<p>题目给出独木桥的长度 $L$，青蛙跳跃的距离范围 $S,T$，桥上石子的位置。你的任务是确定青蛙要想过河，最少需要踩到的石子数。</p>
+<h3 id="输入格式-4"><a href="#输入格式-4" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入共三行，</p>
+<ul>
+<li>第一行有 $1$ 个正整数 $L$，表示独木桥的长度。</li>
+<li>第二行有 $3$ 个正整数 $S,T,M$，分别表示青蛙一次跳跃的最小距离，最大距离及桥上石子的个数。</li>
+<li>第三行有 $M$ 个不同的正整数分别表示这 $M$ 个石子在数轴上的位置（数据保证桥的起点和终点处没有石子）。所有相邻的整数之间用一个空格隔开。</li>
+</ul>
+<h3 id="输出格式-4"><a href="#输出格式-4" class="headerlink" title="输出格式"></a>输出格式</h3><p>一个整数，表示青蛙过河最少需要踩到的石子数。</p>
+<h3 id="样例输入-1-4"><a href="#样例输入-1-4" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">10</span><br><span class="line">2 3 5</span><br><span class="line">2 3 5 6 7</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1-4"><a href="#样例输出-1-4" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<h3 id="提示-2"><a href="#提示-2" class="headerlink" title="提示"></a>提示</h3><p><strong>【数据范围】</strong></p>
+<ul>
+<li>对于 $30%$ 的数据，$1\le L \le 10^4$；</li>
+<li>对于 $100%$ 的数据，$1\le L \le 10^9$，$1\le S\le T\le10$，$1\le M\le100$。</li>
+</ul>
+<p><strong>【题目来源】</strong></p>
+<p>NOIP 2005 提高组第二题</p>
+<h3 id="分析-5"><a href="#分析-5" class="headerlink" title="分析"></a>分析</h3><p>石子很少,可以离散化</p>
+<p>石子距离 &gt;s*t 就直接离散化（但是具体为啥不是很清楚。。。）</p>
+<p>（良心题解：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/Actinoi/solution-p1052%EF%BC%89">https://www.luogu.com.cn/blog/Actinoi/solution-p1052）</a></p>
+<h3 id="Code-4"><a href="#Code-4" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">105</span>, M = <span class="number">10005</span>, K = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> a[N], sum[M];</span><br><span class="line"><span class="type">bool</span> st[K];  <span class="comment">//离散化后的石头位置</span></span><br><span class="line"><span class="type">int</span> l, s, t, m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; l &gt;&gt; s &gt;&gt; t &gt;&gt; m;</span><br><span class="line">    <span class="built_in">memset</span> (sum, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> sum);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i++)  cin &gt;&gt; a[i];</span><br><span class="line">    <span class="built_in">sort</span> (a + <span class="number">1</span>, a + m + <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m + <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="type">int</span> dx = a[i] - a[i<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">if</span> (dx &lt;= t * s)     x += dx;</span><br><span class="line">        <span class="keyword">else</span>    x += dx % t  + t; <span class="comment">//离散化</span></span><br><span class="line">        st[x] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sum[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= x + t; i++) &#123; <span class="comment">//跳出去也算</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = s; j &lt;= t; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> ((i - j) &gt;= <span class="number">0</span>)   sum[i] = <span class="built_in">min</span> (sum[i], sum[i-j] + st[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> ans = <span class="number">1e9</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = x; i &lt;= x + t; i++)    ans = <span class="built_in">min</span> (ans, sum[i]);</span><br><span class="line">    cout &lt;&lt; ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//石子很少,可以离散化</span></span><br><span class="line"><span class="comment">//石子距离 &gt;s*t 就直接离散化</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="C-Mr-Kitayuta-the-Treasure-Hunter"><a href="#C-Mr-Kitayuta-the-Treasure-Hunter" class="headerlink" title="C. Mr. Kitayuta, the Treasure Hunter"></a>C. Mr. Kitayuta, the Treasure Hunter</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/505/problem/C">https://codeforces.com/contest/505/problem/C</a></p>
+<h3 id="分析-6"><a href="#分析-6" class="headerlink" title="分析"></a>分析</h3><p>朴素 dp ：<code>f[i][j]:在i,到i时跳了j</code>，转移：<code>f[i][j] = max (f[i-j][j-1], f[i-j][j+1])+a[i];</code></p>
+<p>和多米诺骨牌那题很像，注意因为每次跳的距离是基于 d 开始变化的，所以只需记录与其差值即可。</p>
+<p><code>(1+2+...+n)&lt;=30000  -&gt; n &lt; 300</code>，估算一下发现要偏移 300。</p>
+<p><strong>记得初始化</strong></p>
+<h3 id="Code-5"><a href="#Code-5" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">30005</span>, M = <span class="number">605</span>, base = <span class="number">300</span>;</span><br><span class="line"><span class="type">int</span> n, d, f[N][M], a[N], x;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; d;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; x;</span><br><span class="line">        a[x] ++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">memset</span> (f, <span class="number">-0x3f</span>, <span class="keyword">sizeof</span> f); <span class="comment">//！！</span></span><br><span class="line">    <span class="type">int</span> ans = f[d][base] = a[d];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = d + <span class="number">1</span>; i &lt;= x; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = -base; j &lt;= base; j++) &#123;</span><br><span class="line">            <span class="type">int</span> dx = d + j; <span class="comment">//i-dx: 实际位置</span></span><br><span class="line">            <span class="keyword">if</span> (dx &lt;= <span class="number">0</span> || dx &gt; i)  <span class="keyword">continue</span>;</span><br><span class="line">            f[i][j+base] = <span class="built_in">max</span> (f[i-dx][j<span class="number">-1</span>+base], f[i-dx][j+<span class="number">1</span>+base]) + a[i];</span><br><span class="line">            f[i][j+base] = <span class="built_in">max</span> (f[i-dx][j+base] + a[i], f[i][j+base]);</span><br><span class="line">            ans = <span class="built_in">max</span> (f[i][j+base], ans);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; ans;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//(1+2+...+n)&lt;=30000  -&gt; n &lt; 300</span></span><br><span class="line"><span class="comment">//故差值不超过300,记录一下偏移</span></span><br><span class="line"><span class="comment">//记录与d的差值,然后偏移一下</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//f[i][j]:在i,到i时跳了j</span></span><br><span class="line"><span class="comment">//f[i][j] = max (f[i-j][j-1], f[i-j][j+1])+a[i];</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="D-Fox-And-Jumping"><a href="#D-Fox-And-Jumping" class="headerlink" title="D. Fox And Jumping"></a>D. Fox And Jumping</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/510/problem/D">https://codeforces.com/contest/510/problem/D</a></p>
+<h3 id="分析-7"><a href="#分析-7" class="headerlink" title="分析"></a>分析</h3><p>取第i个数代价为 ci , 取出若干数使得其最大公约数为1的最小代价</p>
+<p>朴素 dp：<code>f[i][j]: 前i个数,gcd为j</code>，转移：<code>f[i][j]=min(f[i-1][j], f[i-1][k]+ci); //后者取到的条件是gcd(k,li)==1</code></p>
+<p>优化：<strong>n小 l[i] 大 -&gt; 很疏松 -&gt; map存</strong></p>
+<h3 id="Code-6"><a href="#Code-6" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">305</span>;</span><br><span class="line"><span class="type">int</span> l[N], c[N], n;</span><br><span class="line">map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; mp;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)    cin &gt;&gt; l[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)    cin &gt;&gt; c[i];</span><br><span class="line"></span><br><span class="line">    mp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">auto</span> tp = mp;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> pi : tp) &#123;</span><br><span class="line">            <span class="type">int</span> x = __gcd(pi.first, l[i]), y = pi.second + c[i];</span><br><span class="line">            <span class="keyword">if</span> (!tp.<span class="built_in">count</span>(x))    tp[x] = y;</span><br><span class="line">            <span class="keyword">else</span>    tp[x] = <span class="built_in">min</span> (tp[x], y);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">swap</span> (tp, mp);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (mp[<span class="number">1</span>] == <span class="number">0</span>)     mp[<span class="number">1</span>] = <span class="number">-1</span>;</span><br><span class="line">    cout &lt;&lt; mp[<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//取第i个数代价为ci,取出若干数使得其最大公约数为1的最小代价</span></span><br><span class="line"><span class="comment">//f[i][j]: 前i个数,gcd为j</span></span><br><span class="line"><span class="comment">//f[i][j]=min(f[i-1][j], f[i-1][k]+ci); //后者取到的条件是gcd(k,li)==1</span></span><br><span class="line"><span class="comment">//n小li大 -&gt; 很疏松 -&gt; map存</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Brackets"><a href="#Brackets" class="headerlink" title="Brackets"></a><strong>Brackets</strong></h2><p><a target="_blank" rel="noopener" href="http://poj.org/problem?id=2955">http://poj.org/problem?id=2955</a></p>
+<p>大意：求括号序列中匹配的括号数</p>
+<h3 id="分析-8"><a href="#分析-8" class="headerlink" title="分析"></a>分析</h3><p>大体上可以分为两种匹配规则：相邻的直接匹配 或者 由外向内进行匹配，要在这两种策略下进行合理的抉择，使得总匹配数最大。</p>
+<ul>
+<li>直接相邻匹配：<code>f[l][r] = max (f[l][r], f[l][k] + f[k+1][r]);</code></li>
+<li>由外向内拓展：区间 dp，<code>f[l][r] = (len &gt; 2 ? f[l+1][r-1] : 0) + 2;</code></li>
+</ul>
+<h3 id="Code-7"><a href="#Code-7" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">105</span>;</span><br><span class="line"><span class="type">int</span> f[N][N]; <span class="comment">//区间[i,j]</span></span><br><span class="line">string s;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">memset</span> (f, <span class="number">0</span>, <span class="keyword">sizeof</span> f);</span><br><span class="line">    <span class="type">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> len = <span class="number">2</span>; len &lt;= n; len++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> l = <span class="number">0</span>; len + l - <span class="number">1</span> &lt; n; l++) &#123;</span><br><span class="line">            <span class="type">int</span> r = len + l - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (s[l] == <span class="string">&#x27;(&#x27;</span> &amp;&amp; s[r] == <span class="string">&#x27;)&#x27;</span> || s[l] == <span class="string">&#x27;[&#x27;</span> &amp;&amp; s[r] == <span class="string">&#x27;]&#x27;</span>)</span><br><span class="line">                f[l][r] = (len &gt; <span class="number">2</span> ? f[l+<span class="number">1</span>][r<span class="number">-1</span>] : <span class="number">0</span>) + <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> k = l; k &lt; r; k++)</span><br><span class="line">                f[l][r] = <span class="built_in">max</span> (f[l][r], f[l][k] + f[k+<span class="number">1</span>][r]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[<span class="number">0</span>][n<span class="number">-1</span>] &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; s, s != <span class="string">&quot;end&quot;</span>) &#123;</span><br><span class="line">        <span class="built_in">solve</span> ();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//两种匹配策略</span></span><br><span class="line"><span class="comment">//1. 大包小,区间dp</span></span><br><span class="line"><span class="comment">//2. 相邻匹配</span></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92dp/" rel="tag"># 动态规划dp</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/29/%E3%80%90%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%9105-%E7%BD%91%E7%BB%9C%E6%B5%81/" rel="prev" title="【算法学习笔记】05  网络流">
+      <i class="fa fa-chevron-left"></i> 【算法学习笔记】05  网络流
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/01/ACM%E7%AE%97%E6%B3%95%E7%9B%AE%E5%BD%95/" rel="next" title="ACM算法目录">
+      ACM算法目录 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%80%90%E4%B8%93%E9%A2%98%E3%80%91%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%921-%E7%BA%BF%E6%80%A7-x2F-%E8%83%8C%E5%8C%85-x2F-%E5%8C%BA%E9%97%B4dp"><span class="nav-number">1.</span> <span class="nav-text">【专题】动态规划1 线性&#x2F;背包&#x2F;区间dp</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#P2331-SCOI-2005-%E6%9C%80%E5%A4%A7%E5%AD%90%E7%9F%A9%E9%98%B5"><span class="nav-number">1.1.</span> <span class="nav-text">P2331 [SCOI 2005]最大子矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.2.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.3.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%85%A5-1"><span class="nav-number">1.1.4.</span> <span class="nav-text">样例输入 #1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%87%BA-1"><span class="nav-number">1.1.5.</span> <span class="nav-text">样例输出 #1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">1.1.6.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">1.1.7.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P1020-NOIP1999-%E6%99%AE%E5%8F%8A%E7%BB%84-%E5%AF%BC%E5%BC%B9%E6%8B%A6%E6%88%AA"><span class="nav-number">1.2.</span> <span class="nav-text">P1020 [NOIP1999 普及组] 导弹拦截</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%85%A5-1-1"><span class="nav-number">1.2.4.</span> <span class="nav-text">样例输入 #1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%87%BA-1-1"><span class="nav-number">1.2.5.</span> <span class="nav-text">样例输出 #1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E7%A4%BA"><span class="nav-number">1.2.6.</span> <span class="nav-text">提示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90-1"><span class="nav-number">1.2.7.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-1"><span class="nav-number">1.2.8.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P1091-NOIP2004-%E6%8F%90%E9%AB%98%E7%BB%84-%E5%90%88%E5%94%B1%E9%98%9F%E5%BD%A2"><span class="nav-number">1.3.</span> <span class="nav-text">P1091 [NOIP2004 提高组] 合唱队形</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-2"><span class="nav-number">1.3.3.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%85%A5-1-2"><span class="nav-number">1.3.4.</span> <span class="nav-text">样例输入 #1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%87%BA-1-2"><span class="nav-number">1.3.5.</span> <span class="nav-text">样例输出 #1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E7%A4%BA-1"><span class="nav-number">1.3.6.</span> <span class="nav-text">提示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90-2"><span class="nav-number">1.3.7.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-2"><span class="nav-number">1.3.8.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P-1282-%E5%A4%9A%E7%B1%B3%E8%AF%BA%E9%AA%A8%E7%89%8C"><span class="nav-number">1.4.</span> <span class="nav-text">P 1282 多米诺骨牌</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-3"><span class="nav-number">1.4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-3"><span class="nav-number">1.4.2.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-3"><span class="nav-number">1.4.3.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%85%A5-1-3"><span class="nav-number">1.4.4.</span> <span class="nav-text">样例输入 #1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%87%BA-1-3"><span class="nav-number">1.4.5.</span> <span class="nav-text">样例输出 #1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90-3"><span class="nav-number">1.4.6.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-3"><span class="nav-number">1.4.7.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bitset-%E4%BC%98%E5%8C%96%E8%83%8C%E5%8C%85"><span class="nav-number">1.5.</span> <span class="nav-text">Bitset 优化背包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.5.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90-4"><span class="nav-number">1.5.2.</span> <span class="nav-text">分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P1052-NOIP2005-%E6%8F%90%E9%AB%98%E7%BB%84-%E8%BF%87%E6%B2%B3"><span class="nav-number">1.6.</span> <span class="nav-text">P1052 [NOIP2005 提高组] 过河</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-4"><span class="nav-number">1.6.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-4"><span class="nav-number">1.6.2.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-4"><span class="nav-number">1.6.3.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%85%A5-1-4"><span class="nav-number">1.6.4.</span> <span class="nav-text">样例输入 #1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%87%BA-1-4"><span class="nav-number">1.6.5.</span> <span class="nav-text">样例输出 #1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E7%A4%BA-2"><span class="nav-number">1.6.6.</span> <span class="nav-text">提示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90-5"><span class="nav-number">1.6.7.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-4"><span class="nav-number">1.6.8.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Mr-Kitayuta-the-Treasure-Hunter"><span class="nav-number">1.7.</span> <span class="nav-text">C. Mr. Kitayuta, the Treasure Hunter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90-6"><span class="nav-number">1.7.1.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-5"><span class="nav-number">1.7.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Fox-And-Jumping"><span class="nav-number">1.8.</span> <span class="nav-text">D. Fox And Jumping</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90-7"><span class="nav-number">1.8.1.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-6"><span class="nav-number">1.8.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Brackets"><span class="nav-number">1.9.</span> <span class="nav-text">Brackets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90-8"><span class="nav-number">1.9.1.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-7"><span class="nav-number">1.9.2.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="cting"
+      src="https://s2.loli.net/2022/08/29/YyF3NStnorTxIUd.png">
+  <p class="site-author-name" itemprop="name">cting</p>
+  <div class="site-description" itemprop="description">Sakana~~~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TTsohandsome" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TTsohandsome" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2397161038@qq.com" title="E-Mail → mailto:2397161038@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://n-wn.github.io/" title="https:&#x2F;&#x2F;n-wn.github.io&#x2F;" rel="noopener" target="_blank">全能又耐心的LOV3大佬</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://marioctx.com/" title="https:&#x2F;&#x2F;marioctx.com&#x2F;" rel="noopener" target="_blank">什么都会的ctx大佬</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://fangd.net/" title="https:&#x2F;&#x2F;fangd.net&#x2F;" rel="noopener" target="_blank">明明是嘉心糖却还要嘴硬的fd</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://ttsohandsome.github.io/" title="https:&#x2F;&#x2F;ttsohandsome.github.io&#x2F;" rel="noopener" target="_blank">(广告位招租)</a>
+        </li>
+    </ul>
+  </div>
+
+
+
+<div id="aplayer" class="aplayer"></div>
+<script src="/js/src/custom/APlayer.min.js"></script>
+<script type="text/javascript">
+var ap = new APlayer({
+  element: document.getElementById('aplayer'),         // Optional, player element
+  narrow: false,         // Optional, narrow style
+  autoplay: false,              // Optional, autoplay song(s), not supported by mobile browsers
+  showlrc: 0,     // Optional, show lrc, can be 0, 1, 2, see: ###With lrc
+  mutex: true,                 // Optional, pause other players when this player playing
+  theme: '#e6d0b2',          // Optional, theme color, default: #b7daff
+  mode: 'random',      // Optional, play mode, can be `random` `single` `circulation`(loop) `order`(no loop), default: `circulation`
+  preload: 'metadata',               // Optional, the way to load music, can be 'none' 'metadata' 'auto', default: 'auto'
+  listmaxheight: '513px',      // Optional, max height of play list
+  music: [{
+    title: '双笙 囧菌 - 世末歌者',
+    author: '双笙 囧菌',
+    url: 'https://qianling-1254036047.cos.ap-chengdu.myqcloud.com/music/%E5%8F%8C%E7%AC%99%20%E5%9B%A7%E8%8F%8C%20-%20%E4%B8%96%E6%9C%AB%E6%AD%8C%E8%80%85.mp3',
+    pic: 'https://qianling-1254036047.cos.ap-chengdu.myqcloud.com/music/%E5%8F%8C%E7%AC%99%20%E5%9B%A7%E8%8F%8C%20-%20%E4%B8%96%E6%9C%AB%E6%AD%8C%E8%80%85.webp',
+  }, {
+    title: '幹物女(WeiWei)',
+    author: '封茗囧菌',
+    url: 'https://qianling-1254036047.cos.ap-chengdu.myqcloud.com/music/%E5%B0%81%E8%8C%97%E5%9B%A7%E8%8F%8C%20-%20%E5%B9%B9%E7%89%A9%E5%A5%B3(WeiWei).mp3',
+    pic: 'https://qianling-1254036047.cos.ap-chengdu.myqcloud.com/music/%E5%B0%81%E8%8C%97%E5%9B%A7%E8%8F%8C%20-%20%E5%B9%B9%E7%89%A9%E5%A5%B3(WeiWei).webp',
+  }]
+  });
+</script>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cting</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

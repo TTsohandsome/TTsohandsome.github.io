@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Discrete Mathematics notes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Discrete Mathematics">
+<meta property="og:url" content="http://example.com/2022/09/06/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/index.html">
+<meta property="og:site_name" content="Sakana~">
+<meta property="og:description" content="Discrete Mathematics notes">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/8b18cabd67419460849b0c1b267ac86.jpg">
+<meta property="og:image" content="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/afc9234837052afb50d204aa35af0d7.jpg">
+<meta property="og:image" content="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/732fa1e9cbe879376c30e1e3e2d2764.jpg">
+<meta property="og:image" content="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/9e8969f28cf517288cd0fd3483687b7.jpg">
+<meta property="og:image" content="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/63acc54ecb3d97f9a6eb59b8b5efc2a.jpg">
+<meta property="og:image" content="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/3f460c0b26201a178facea807af35aa.jpg">
+<meta property="article:published_time" content="2022-09-06T02:16:47.000Z">
+<meta property="article:modified_time" content="2022-09-11T14:31:15.507Z">
+<meta property="article:author" content="cting">
+<meta property="article:tag" content="离散数学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/8b18cabd67419460849b0c1b267ac86.jpg">
+
+<link rel="canonical" href="http://example.com/2022/09/06/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Discrete Mathematics | Sakana~</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/custom_css_source.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Sakana~</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-school-flag fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-satellite-dish fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tower-cell fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fish fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-jet-fighter-up fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-seedling fa-fw"></i>日程表</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+<!-- 点击特效 -->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+<script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+<!-- 阅读进度条 -->
+<div class="top-scroll-bar"></div>
+
+
+
+<!-- 网易云 -->
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1939401645&auto=1&height=66"></iframe>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/06/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s2.loli.net/2022/08/29/YyF3NStnorTxIUd.png">
+      <meta itemprop="name" content="cting">
+      <meta itemprop="description" content="Sakana~~~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sakana~">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Discrete Mathematics
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-09-06 10:16:47" itemprop="dateCreated datePublished" datetime="2022-09-06T10:16:47+08:00">2022-09-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-11 22:31:15" itemprop="dateModified" datetime="2022-09-11T22:31:15+08:00">2022-09-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" itemprop="url" rel="index"><span itemprop="name">专业课</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Discrete Mathematics notes</p>
+<span id="more"></span>
+<h1 id="Discrete-Mathematics"><a href="#Discrete-Mathematics" class="headerlink" title="Discrete Mathematics"></a>Discrete Mathematics</h1><h2 id="Logic"><a href="#Logic" class="headerlink" title="Logic"></a>Logic</h2><p>Proposition： A <strong>declarative</strong> sentence that is either true or false, but <strong>not both</strong></p>
+<h3 id="Logical-operators"><a href="#Logical-operators" class="headerlink" title="Logical operators"></a>Logical operators</h3><ul>
+<li><p>Negation operator  ¬</p>
+</li>
+<li><p>Conjunction (and, ^)</p>
+</li>
+<li><p><strong>Disjunction (or, v )</strong> （相容或）</p>
+</li>
+<li><p><strong>Conditional statement →</strong></p>
+</li>
+<li><p>Biconditional statement ↔   (if and only if)</p>
+</li>
+<li><p>Exclusive Or (xor，⊕)</p>
+</li>
+</ul>
+<h4 id="More-about-Conditional-statement"><a href="#More-about-Conditional-statement" class="headerlink" title="More about Conditional statement"></a>More about Conditional statement</h4><p><strong>only T→F get F</strong></p>
+<p><strong>p only if q：</strong> p → q</p>
+<p><strong>q unless ¬p</strong>:  p → q</p>
+<p>p → q  <strong>equals to</strong> (¬p v q)</p>
+<h4 id="whether-these-system-specifications-are-consistent"><a href="#whether-these-system-specifications-are-consistent" class="headerlink" title="whether these system specifications are consistent"></a>whether these system specifications are consistent</h4><p>All statements are not contradictory</p>
+<h3 id="Tautology-and-contradiction"><a href="#Tautology-and-contradiction" class="headerlink" title="Tautology and contradiction"></a>Tautology and contradiction</h3><p><strong>Tautology</strong>: always true</p>
+<p> <strong>Contradiction</strong>: always false</p>
+<p> <strong>Contingency</strong>: neither a tautology nor a contradiction</p>
+<h4 id="Logical-equivalence"><a href="#Logical-equivalence" class="headerlink" title="Logical equivalence"></a>Logical equivalence</h4><p><strong>p ≡ q : p ↔ q is a tautology </strong></p>
+<p>The symbol ≡ is not a logical connective, </p>
+<p>and p ≡ q is not a compound proposition</p>
+<h3 id="Some-laws"><a href="#Some-laws" class="headerlink" title="Some laws"></a>Some laws</h3><p><img src="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/8b18cabd67419460849b0c1b267ac86.jpg" alt=""></p>
+<p><img src="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/afc9234837052afb50d204aa35af0d7.jpg" alt=""></p>
+<p><img src="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/732fa1e9cbe879376c30e1e3e2d2764.jpg" alt=""></p>
+<h3 id="Predicates-amp-Quantifiers"><a href="#Predicates-amp-Quantifiers" class="headerlink" title="Predicates &amp; Quantifiers"></a>Predicates &amp; Quantifiers</h3><p>Predicates：<strong>involving variables</strong></p>
+<p>P(x):  also called the value of the <strong>propositional function</strong> P at x</p>
+<p>Once a value is <em>assigned</em> to the variable x, P(x) <strong>becomes a proposition</strong> and has a truth value</p>
+<p>Quantifiers：</p>
+<ul>
+<li><strong>Universal</strong>：<strong>every</strong></li>
+<li><strong>Existential</strong>：<strong>one or more</strong></li>
+<li>Uniqueness quantifier：<strong>There is exactly one</strong>  <img src="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/9e8969f28cf517288cd0fd3483687b7.jpg" style="zoom: 50%;" /></li>
+</ul>
+<h4 id="Translate-between-Quantifiers-and-Logical-operators"><a href="#Translate-between-Quantifiers-and-Logical-operators" class="headerlink" title="Translate between Quantifiers and Logical operators"></a>Translate between Quantifiers and Logical operators</h4><p><img src="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/63acc54ecb3d97f9a6eb59b8b5efc2a.jpg" alt=""></p>
+<ul>
+<li><p><strong><img src="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/3f460c0b26201a178facea807af35aa.jpg" style="zoom: 50%;" />have higher precedence than all logical operators from propositional calculus</strong></p>
+</li>
+<li><p><strong>The same letter is often used to represent variables bound by different quantifiers with scopes that do not overlap</strong></p>
+</li>
+</ul>
+<p><strong>Important：exist == v;    all == →</strong></p>
+<h2 id="Proof"><a href="#Proof" class="headerlink" title="Proof"></a>Proof</h2><h2 id="Sets"><a href="#Sets" class="headerlink" title="Sets"></a>Sets</h2><h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><h2 id="Number-theory"><a href="#Number-theory" class="headerlink" title="Number theory"></a>Number theory</h2><h2 id="Counting"><a href="#Counting" class="headerlink" title="Counting"></a>Counting</h2><h2 id="Relations"><a href="#Relations" class="headerlink" title="Relations"></a>Relations</h2><h2 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h2><h2 id="Tree"><a href="#Tree" class="headerlink" title="Tree"></a>Tree</h2><h2 id="Boolean-algebra"><a href="#Boolean-algebra" class="headerlink" title="Boolean algebra"></a>Boolean algebra</h2>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/" rel="tag"># 离散数学</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/05/SZUACM-2022%E7%BB%84%E9%98%9F%E7%A7%AF%E5%88%86%E8%B5%9B1-6-%E9%A2%98%E8%A7%A3-%E6%80%BB%E7%BB%93/" rel="prev" title="SZUACM 2022组队积分赛1-6 题解+总结">
+      <i class="fa fa-chevron-left"></i> SZUACM 2022组队积分赛1-6 题解+总结
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E8%AE%BE%E8%AE%A1%EF%BC%88%E8%AE%A1%E7%B3%BB3%EF%BC%89/" rel="next" title="计算机组成与设计（计系3）">
+      计算机组成与设计（计系3） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Discrete-Mathematics"><span class="nav-number">1.</span> <span class="nav-text">Discrete Mathematics</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Logic"><span class="nav-number">1.1.</span> <span class="nav-text">Logic</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Logical-operators"><span class="nav-number">1.1.1.</span> <span class="nav-text">Logical operators</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#More-about-Conditional-statement"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">More about Conditional statement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#whether-these-system-specifications-are-consistent"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">whether these system specifications are consistent</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tautology-and-contradiction"><span class="nav-number">1.1.2.</span> <span class="nav-text">Tautology and contradiction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Logical-equivalence"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Logical equivalence</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Some-laws"><span class="nav-number">1.1.3.</span> <span class="nav-text">Some laws</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Predicates-amp-Quantifiers"><span class="nav-number">1.1.4.</span> <span class="nav-text">Predicates &amp; Quantifiers</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Translate-between-Quantifiers-and-Logical-operators"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">Translate between Quantifiers and Logical operators</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Proof"><span class="nav-number">1.2.</span> <span class="nav-text">Proof</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sets"><span class="nav-number">1.3.</span> <span class="nav-text">Sets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Functions"><span class="nav-number">1.4.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-theory"><span class="nav-number">1.5.</span> <span class="nav-text">Number theory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Counting"><span class="nav-number">1.6.</span> <span class="nav-text">Counting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Relations"><span class="nav-number">1.7.</span> <span class="nav-text">Relations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Graph"><span class="nav-number">1.8.</span> <span class="nav-text">Graph</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tree"><span class="nav-number">1.9.</span> <span class="nav-text">Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boolean-algebra"><span class="nav-number">1.10.</span> <span class="nav-text">Boolean algebra</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="cting"
+      src="https://s2.loli.net/2022/08/29/YyF3NStnorTxIUd.png">
+  <p class="site-author-name" itemprop="name">cting</p>
+  <div class="site-description" itemprop="description">Sakana~~~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TTsohandsome" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TTsohandsome" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2397161038@qq.com" title="E-Mail → mailto:2397161038@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://n-wn.github.io/" title="https:&#x2F;&#x2F;n-wn.github.io&#x2F;" rel="noopener" target="_blank">全能又耐心的LOV3大佬</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://marioctx.com/" title="https:&#x2F;&#x2F;marioctx.com&#x2F;" rel="noopener" target="_blank">什么都会的ctx大佬</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://fangd.net/" title="https:&#x2F;&#x2F;fangd.net&#x2F;" rel="noopener" target="_blank">明明是嘉心糖却还要嘴硬的fd</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://ttsohandsome.github.io/" title="https:&#x2F;&#x2F;ttsohandsome.github.io&#x2F;" rel="noopener" target="_blank">(广告位招租)</a>
+        </li>
+    </ul>
+  </div>
+
+
+
+<div id="aplayer" class="aplayer"></div>
+<script src="/js/src/custom/APlayer.min.js"></script>
+<script type="text/javascript">
+var ap = new APlayer({
+  element: document.getElementById('aplayer'),         // Optional, player element
+  narrow: false,         // Optional, narrow style
+  autoplay: false,              // Optional, autoplay song(s), not supported by mobile browsers
+  showlrc: 0,     // Optional, show lrc, can be 0, 1, 2, see: ###With lrc
+  mutex: true,                 // Optional, pause other players when this player playing
+  theme: '#e6d0b2',          // Optional, theme color, default: #b7daff
+  mode: 'random',      // Optional, play mode, can be `random` `single` `circulation`(loop) `order`(no loop), default: `circulation`
+  preload: 'metadata',               // Optional, the way to load music, can be 'none' 'metadata' 'auto', default: 'auto'
+  listmaxheight: '513px',      // Optional, max height of play list
+  music: [{
+    title: '双笙 囧菌 - 世末歌者',
+    author: '双笙 囧菌',
+    url: 'https://qianling-1254036047.cos.ap-chengdu.myqcloud.com/music/%E5%8F%8C%E7%AC%99%20%E5%9B%A7%E8%8F%8C%20-%20%E4%B8%96%E6%9C%AB%E6%AD%8C%E8%80%85.mp3',
+    pic: 'https://qianling-1254036047.cos.ap-chengdu.myqcloud.com/music/%E5%8F%8C%E7%AC%99%20%E5%9B%A7%E8%8F%8C%20-%20%E4%B8%96%E6%9C%AB%E6%AD%8C%E8%80%85.webp',
+  }, {
+    title: '幹物女(WeiWei)',
+    author: '封茗囧菌',
+    url: 'https://qianling-1254036047.cos.ap-chengdu.myqcloud.com/music/%E5%B0%81%E8%8C%97%E5%9B%A7%E8%8F%8C%20-%20%E5%B9%B9%E7%89%A9%E5%A5%B3(WeiWei).mp3',
+    pic: 'https://qianling-1254036047.cos.ap-chengdu.myqcloud.com/music/%E5%B0%81%E8%8C%97%E5%9B%A7%E8%8F%8C%20-%20%E5%B9%B9%E7%89%A9%E5%A5%B3(WeiWei).webp',
+  }]
+  });
+</script>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cting</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="课本：《网络安全基础》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机安全导论">
+<meta property="og:url" content="http://example.com/2022/09/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8%E5%AF%BC%E8%AE%BA/index.html">
+<meta property="og:site_name" content="Sakana~">
+<meta property="og:description" content="课本：《网络安全基础》">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/image-20220910152049488.png">
+<meta property="og:image" content="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/11">
+<meta property="og:image" content="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/22">
+<meta property="og:image" content="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/1GB%60%5DNF1QDP2WEEGWA4KAWO.png">
+<meta property="article:published_time" content="2022-09-09T07:07:47.000Z">
+<meta property="article:modified_time" content="2022-09-10T08:22:19.738Z">
+<meta property="article:author" content="cting">
+<meta property="article:tag" content="网络安全">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/image-20220910152049488.png">
+
+<link rel="canonical" href="http://example.com/2022/09/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8%E5%AF%BC%E8%AE%BA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>计算机安全导论 | Sakana~</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/custom_css_source.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Sakana~</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-school-flag fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-satellite-dish fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tower-cell fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fish fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-jet-fighter-up fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-seedling fa-fw"></i>日程表</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+<!-- 点击特效 -->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+<script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+<!-- 阅读进度条 -->
+<div class="top-scroll-bar"></div>
+
+
+
+<!-- 网易云 -->
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1939401645&auto=1&height=66"></iframe>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8%E5%AF%BC%E8%AE%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s2.loli.net/2022/08/29/YyF3NStnorTxIUd.png">
+      <meta itemprop="name" content="cting">
+      <meta itemprop="description" content="Sakana~~~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sakana~">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机安全导论
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-09-09 15:07:47" itemprop="dateCreated datePublished" datetime="2022-09-09T15:07:47+08:00">2022-09-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-10 16:22:19" itemprop="dateModified" datetime="2022-09-10T16:22:19+08:00">2022-09-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" itemprop="url" rel="index"><span itemprop="name">专业课</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>课本：《网络安全基础》</p>
+<span id="more"></span>
+
+<h1 id="对称加密原理"><a href="#对称加密原理" class="headerlink" title="对称加密原理"></a>对称加密原理</h1><h2 id="对称加密模型"><a href="#对称加密模型" class="headerlink" title="对称加密模型"></a>对称加密模型</h2><ul>
+<li>对称加密：单钥</li>
+<li>加密算法和解密算法同密钥</li>
+<li>数学表示：<code>C=E(K,M),M=D(K,C)</code><br>  C密文，M明文，K私钥，E加密算法，D解密算法</li>
+<li>安全要求：<ul>
+<li><strong>强安全的加密算法+只有发送方和接收方才知道的私钥</strong></li>
+<li>加密算法是公开的</li>
+<li>存在一个安全通道分发私钥</li>
+</ul>
+</li>
+</ul>
+<h2 id="密码体制分类"><a href="#密码体制分类" class="headerlink" title="密码体制分类"></a>密码体制分类</h2><h3 id="明文转换密文的操作类型"><a href="#明文转换密文的操作类型" class="headerlink" title="明文转换密文的操作类型"></a>明文转换密文的操作类型</h3><ul>
+<li>替换密码</li>
+<li>换位密码</li>
+<li>乘积密码（多级替换+换位）</li>
+</ul>
+<h3 id="使用的密钥数"><a href="#使用的密钥数" class="headerlink" title="使用的密钥数"></a>使用的密钥数</h3><ul>
+<li>对称、单钥、秘密密钥或者传统加密</li>
+<li>不对称、双钥或者公钥加密</li>
+</ul>
+<h3 id="明文处理方式"><a href="#明文处理方式" class="headerlink" title="明文处理方式"></a>明文处理方式</h3><ul>
+<li>分组密码</li>
+<li>流密码：连续处理</li>
+</ul>
+<h2 id="密码分析"><a href="#密码分析" class="headerlink" title="密码分析"></a>密码分析</h2><h3 id="密码分析攻击"><a href="#密码分析攻击" class="headerlink" title="密码分析攻击"></a>密码分析攻击</h3><h4 id="唯密文攻击"><a href="#唯密文攻击" class="headerlink" title="唯密文攻击"></a>唯密文攻击</h4><ul>
+<li>加密算法</li>
+<li>要解密的密文</li>
+</ul>
+<h4 id="已知明文攻击"><a href="#已知明文攻击" class="headerlink" title="已知明文攻击"></a>已知明文攻击</h4><ul>
+<li>加密算法</li>
+<li>要解密的密文</li>
+<li>用密钥生成<strong>明文-密文对</strong></li>
+</ul>
+<h4 id="选择明文攻击"><a href="#选择明文攻击" class="headerlink" title="选择明文攻击"></a>选择明文攻击</h4><ul>
+<li>加密算法</li>
+<li>要解密的密文</li>
+<li>破译者选定明文消息，以及使用密钥产生的对应密文</li>
+</ul>
+<h4 id="选择密文攻击"><a href="#选择密文攻击" class="headerlink" title="选择密文攻击"></a>选择密文攻击</h4><ul>
+<li>加密算法</li>
+<li>要解密的密文</li>
+<li>破译者选定密文，以及使用密钥产生的对应解密明文</li>
+</ul>
+<h4 id="选择文本攻击"><a href="#选择文本攻击" class="headerlink" title="选择文本攻击"></a>选择文本攻击</h4><ul>
+<li>加密算法</li>
+<li>要解密的密文</li>
+<li>破译者选定明文消息，以及使用密钥产生的对应密文</li>
+<li>破译者选定密文，以及使用密钥产生的对应解密明文</li>
+</ul>
+<h3 id="穷举搜索攻击"><a href="#穷举搜索攻击" class="headerlink" title="穷举搜索攻击"></a>穷举搜索攻击</h3><p>简单尝试每一个密钥</p>
+<h3 id="密码安全"><a href="#密码安全" class="headerlink" title="密码安全"></a>密码安全</h3><h4 id="无条件安全"><a href="#无条件安全" class="headerlink" title="无条件安全"></a>无条件安全</h4><ul>
+<li>无论花多少时间，无论有多少已知信息，都不能唯一确定密文所对应的明文</li>
+<li>一次一密可以保证无条件安全。</li>
+</ul>
+<h4 id="计算安全"><a href="#计算安全" class="headerlink" title="计算安全"></a>计算安全</h4><ul>
+<li>破译密文的代价超出被加密信息的价值</li>
+<li>破译密文的时间超出信息的有效生命期</li>
+</ul>
+<h2 id="古典密码"><a href="#古典密码" class="headerlink" title="古典密码"></a>古典密码</h2><h3 id="替换密码"><a href="#替换密码" class="headerlink" title="替换密码"></a>替换密码</h3><p>将明文每一个元素（比特或字母）映射到另外一个元素</p>
+<h4 id="凯撒密码"><a href="#凯撒密码" class="headerlink" title="凯撒密码"></a>凯撒密码</h4><p>加密算法：c &#x3D; E(3, m) &#x3D; m+3 (mod 26)<br>解密算法：m &#x3D; D(3, c) &#x3D; c - 3 (mod 26)</p>
+<h4 id="移位密码"><a href="#移位密码" class="headerlink" title="移位密码"></a>移位密码</h4><p>加密算法：c &#x3D; E(k, m) &#x3D; m+k (mod 26)<br>解密算法：m &#x3D; D(k, c) &#x3D; c - k (mod 26)</p>
+<h4 id="维吉尼亚密码"><a href="#维吉尼亚密码" class="headerlink" title="维吉尼亚密码"></a>维吉尼亚密码</h4><p>多表替换</p>
+<p><img src="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/image-20220910152049488.png"></p>
+<h4 id="轮转机"><a href="#轮转机" class="headerlink" title="轮转机"></a>轮转机</h4><p>复杂多变的多表替换密码系统</p>
+<p>l3个圆筒的轮转机系统有26^3^&#x3D;17576个不同的替换字母表。</p>
+<h3 id="换位密码"><a href="#换位密码" class="headerlink" title="换位密码"></a>换位密码</h3><h4 id="栅栏密码"><a href="#栅栏密码" class="headerlink" title="栅栏密码"></a>栅栏密码</h4><p>对角线顺序写入明文，行顺序读出作为密文</p>
+<h4 id="行变化密码"><a href="#行变化密码" class="headerlink" title="行变化密码"></a>行变化密码</h4><p>把消息一行一行写成矩形块，按列读出，但是把列次序打乱，列的读取次序就是密钥</p>
+<h1 id="分组密码"><a href="#分组密码" class="headerlink" title="分组密码"></a>分组密码</h1><h2 id="分组密码-1"><a href="#分组密码-1" class="headerlink" title="分组密码"></a>分组密码</h2><p>将被加密明文划分成一个一个的分组，输入n比特明文分组，输出n比特密文分组。若映射可逆，具有2^n^！种替换可能性。</p>
+<p><img src="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/11"></p>
+<h3 id="分组密码安全分析"><a href="#分组密码安全分析" class="headerlink" title="分组密码安全分析"></a>分组密码安全分析</h3><p>若n较小时：为古典替换密码，易受频度分析法攻击</p>
+<p>若n较大时：映射本身构成密钥，密钥长度定义为n×2^n^比特。</p>
+<p><strong>实际应用中不大可能传输或保存如此多的密钥。</strong></p>
+<h2 id="Feistel密码结构"><a href="#Feistel密码结构" class="headerlink" title="Feistel密码结构"></a>Feistel密码结构</h2><p><img src="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/22"></p>
+<p><img src="https://cting-1313551327.cos.ap-guangzhou.myqcloud.com/1GB%60%5DNF1QDP2WEEGWA4KAWO.png"></p>
+<p>要素：分组大小，密钥大小，迭代次数，子密钥产生算法，轮函数，快速软件加密&#x2F;解密，容易分析</p>
+<h2 id="数据加密标准-DES"><a href="#数据加密标准-DES" class="headerlink" title="数据加密标准(DES)"></a>数据加密标准(DES)</h2><p>明文分组长度为 64-bit ，密钥长度为56-bit，在基于Feistel网络的基础上，采用16轮迭代，从原始56-bit密钥产生16组子密钥，每一轮迭代使用一个子密钥。</p>
+<h2 id="三重DES"><a href="#三重DES" class="headerlink" title="三重DES"></a>三重DES</h2>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag"># 网络安全</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/07/JAVA/" rel="prev" title="JAVA">
+      <i class="fa fa-chevron-left"></i> JAVA
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/12/%E3%80%90kuangbin%E4%B8%93%E9%A2%98%E3%80%9122-%E5%8C%BA%E9%97%B4dp/" rel="next" title="【kuangbin专题】22 区间dp">
+      【kuangbin专题】22 区间dp <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">对称加密原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.1.</span> <span class="nav-text">对称加密模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6%E5%88%86%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">密码体制分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%8E%E6%96%87%E8%BD%AC%E6%8D%A2%E5%AF%86%E6%96%87%E7%9A%84%E6%93%8D%E4%BD%9C%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">明文转换密文的操作类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%9A%84%E5%AF%86%E9%92%A5%E6%95%B0"><span class="nav-number">1.2.2.</span> <span class="nav-text">使用的密钥数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%8E%E6%96%87%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.3.</span> <span class="nav-text">明文处理方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E7%A0%81%E5%88%86%E6%9E%90"><span class="nav-number">1.3.</span> <span class="nav-text">密码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%86%E7%A0%81%E5%88%86%E6%9E%90%E6%94%BB%E5%87%BB"><span class="nav-number">1.3.1.</span> <span class="nav-text">密码分析攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%94%AF%E5%AF%86%E6%96%87%E6%94%BB%E5%87%BB"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">唯密文攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%B2%E7%9F%A5%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">已知明文攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">选择明文攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%AF%86%E6%96%87%E6%94%BB%E5%87%BB"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">选择密文攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E6%96%87%E6%9C%AC%E6%94%BB%E5%87%BB"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">选择文本攻击</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2%E6%94%BB%E5%87%BB"><span class="nav-number">1.3.2.</span> <span class="nav-text">穷举搜索攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%86%E7%A0%81%E5%AE%89%E5%85%A8"><span class="nav-number">1.3.3.</span> <span class="nav-text">密码安全</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E6%9D%A1%E4%BB%B6%E5%AE%89%E5%85%A8"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">无条件安全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%AE%89%E5%85%A8"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">计算安全</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81"><span class="nav-number">1.4.</span> <span class="nav-text">古典密码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2%E5%AF%86%E7%A0%81"><span class="nav-number">1.4.1.</span> <span class="nav-text">替换密码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%AF%E6%92%92%E5%AF%86%E7%A0%81"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">凯撒密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A7%BB%E4%BD%8D%E5%AF%86%E7%A0%81"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">移位密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A%E5%AF%86%E7%A0%81"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">维吉尼亚密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AE%E8%BD%AC%E6%9C%BA"><span class="nav-number">1.4.1.4.</span> <span class="nav-text">轮转机</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%A2%E4%BD%8D%E5%AF%86%E7%A0%81"><span class="nav-number">1.4.2.</span> <span class="nav-text">换位密码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%85%E6%A0%8F%E5%AF%86%E7%A0%81"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">栅栏密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%8C%E5%8F%98%E5%8C%96%E5%AF%86%E7%A0%81"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">行变化密码</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">分组密码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81-1"><span class="nav-number">2.1.</span> <span class="nav-text">分组密码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81%E5%AE%89%E5%85%A8%E5%88%86%E6%9E%90"><span class="nav-number">2.1.1.</span> <span class="nav-text">分组密码安全分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feistel%E5%AF%86%E7%A0%81%E7%BB%93%E6%9E%84"><span class="nav-number">2.2.</span> <span class="nav-text">Feistel密码结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E6%A0%87%E5%87%86-DES"><span class="nav-number">2.3.</span> <span class="nav-text">数据加密标准(DES)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E9%87%8DDES"><span class="nav-number">2.4.</span> <span class="nav-text">三重DES</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="cting"
+      src="https://s2.loli.net/2022/08/29/YyF3NStnorTxIUd.png">
+  <p class="site-author-name" itemprop="name">cting</p>
+  <div class="site-description" itemprop="description">Sakana~~~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TTsohandsome" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TTsohandsome" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2397161038@qq.com" title="E-Mail → mailto:2397161038@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://n-wn.github.io/" title="https:&#x2F;&#x2F;n-wn.github.io&#x2F;" rel="noopener" target="_blank">全能又耐心的LOV3大佬</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://marioctx.com/" title="https:&#x2F;&#x2F;marioctx.com&#x2F;" rel="noopener" target="_blank">什么都会的ctx大佬</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://fangd.net/" title="https:&#x2F;&#x2F;fangd.net&#x2F;" rel="noopener" target="_blank">明明是嘉心糖却还要嘴硬的fd</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://ttsohandsome.github.io/" title="https:&#x2F;&#x2F;ttsohandsome.github.io&#x2F;" rel="noopener" target="_blank">(广告位招租)</a>
+        </li>
+    </ul>
+  </div>
+
+
+
+<div id="aplayer" class="aplayer"></div>
+<script src="/js/src/custom/APlayer.min.js"></script>
+<script type="text/javascript">
+var ap = new APlayer({
+  element: document.getElementById('aplayer'),         // Optional, player element
+  narrow: false,         // Optional, narrow style
+  autoplay: false,              // Optional, autoplay song(s), not supported by mobile browsers
+  showlrc: 0,     // Optional, show lrc, can be 0, 1, 2, see: ###With lrc
+  mutex: true,                 // Optional, pause other players when this player playing
+  theme: '#e6d0b2',          // Optional, theme color, default: #b7daff
+  mode: 'random',      // Optional, play mode, can be `random` `single` `circulation`(loop) `order`(no loop), default: `circulation`
+  preload: 'metadata',               // Optional, the way to load music, can be 'none' 'metadata' 'auto', default: 'auto'
+  listmaxheight: '513px',      // Optional, max height of play list
+  music: [{
+    title: '双笙 囧菌 - 世末歌者',
+    author: '双笙 囧菌',
+    url: 'https://qianling-1254036047.cos.ap-chengdu.myqcloud.com/music/%E5%8F%8C%E7%AC%99%20%E5%9B%A7%E8%8F%8C%20-%20%E4%B8%96%E6%9C%AB%E6%AD%8C%E8%80%85.mp3',
+    pic: 'https://qianling-1254036047.cos.ap-chengdu.myqcloud.com/music/%E5%8F%8C%E7%AC%99%20%E5%9B%A7%E8%8F%8C%20-%20%E4%B8%96%E6%9C%AB%E6%AD%8C%E8%80%85.webp',
+  }, {
+    title: '幹物女(WeiWei)',
+    author: '封茗囧菌',
+    url: 'https://qianling-1254036047.cos.ap-chengdu.myqcloud.com/music/%E5%B0%81%E8%8C%97%E5%9B%A7%E8%8F%8C%20-%20%E5%B9%B9%E7%89%A9%E5%A5%B3(WeiWei).mp3',
+    pic: 'https://qianling-1254036047.cos.ap-chengdu.myqcloud.com/music/%E5%B0%81%E8%8C%97%E5%9B%A7%E8%8F%8C%20-%20%E5%B9%B9%E7%89%A9%E5%A5%B3(WeiWei).webp',
+  }]
+  });
+</script>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cting</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
