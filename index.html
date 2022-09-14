@@ -600,7 +600,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-14 22:36:20" itemprop="dateModified" datetime="2022-09-14T22:36:20+08:00">2022-09-14</time>
+                <time title="修改时间：2022-09-14 22:38:30" itemprop="dateModified" datetime="2022-09-14T22:38:30+08:00">2022-09-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -623,35 +623,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <span id="more"></span>
-
-<h1 id="JAVA"><a href="#JAVA" class="headerlink" title="JAVA"></a>JAVA</h1><p>康康  <a target="_blank" rel="noopener" href="https://oi-wiki.org/lang/java/#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95">oi-wiki的爪哇速成</a></p>
-<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p>先记录一下做第一次实验积累的操作</p>
-<h3 id="主函数"><a href="#主函数" class="headerlink" title="主函数"></a>主函数</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 程序的代码</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>字符串 <strong>String</strong> 要大写</p>
-<p><strong>final</strong> 关键字相当于 const</p>
-<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><p>必须要 new</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] ary = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">10</span>];</span><br></pre></td></tr></table></figure>
-
-<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>字符串反转：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String string=<span class="string">&quot;runoob&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">reverse</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuffer</span>(string).reverse().toString();</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h3><h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scan</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in); <span class="comment">// System.in 是输入流</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> scan.nextInt();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">12</span>;</span><br><span class="line">        System.out.printf(<span class="string">&quot;%d\n&quot;</span>, a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="类STL"><a href="#类STL" class="headerlink" title="类STL"></a>类STL</h3><h4 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h4><p><a target="_blank" rel="noopener" href="https://www.cainiaojc.com/java/java-priorityqueue.html">https://www.cainiaojc.com/java/java-priorityqueue.html</a></p>
-<p>小根堆</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PriorityQueue&lt;Integer&gt; numbers = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;();</span><br><span class="line">q.peek(); <span class="comment">//堆顶元素</span></span><br><span class="line">q.poll(); <span class="comment">//弹出堆顶</span></span><br><span class="line">q.add (x); <span class="comment">//插入元素</span></span><br></pre></td></tr></table></figure>
-
-<p>注意：声明首字母都要大写，整型是 Integer</p>
-<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><p>auto  对应 var</p>
-<p>vector 对应 ArrayList</p>
-<p>java中double型如何控制有效数字输出位数或精度？<a target="_blank" rel="noopener" href="https://blog.csdn.net/ywyngq/article/details/111898403">https://blog.csdn.net/ywyngq/article/details/111898403</a></p>
-
+          <p>爪哇爪哇爪哇</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/09/07/JAVA/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
