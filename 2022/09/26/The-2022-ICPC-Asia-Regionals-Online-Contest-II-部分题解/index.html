@@ -28,7 +28,7 @@
 <meta property="og:description" content="2022 ICPC网络赛第二场题解">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-09-26T14:52:50.000Z">
-<meta property="article:modified_time" content="2022-09-27T13:09:32.145Z">
+<meta property="article:modified_time" content="2022-09-27T16:05:29.794Z">
 <meta property="article:author" content="cting">
 <meta property="article:tag" content="ICPC题解">
 <meta name="twitter:card" content="summary">
@@ -216,7 +216,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-27 21:09:32" itemprop="dateModified" datetime="2022-09-27T21:09:32+08:00">2022-09-27</time>
+                <time title="修改时间：2022-09-28 00:05:29" itemprop="dateModified" datetime="2022-09-28T00:05:29+08:00">2022-09-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -259,7 +259,8 @@
 
 
 
-<h2 id="A-Yet-Another-Remainder"><a href="#A-Yet-Another-Remainder" class="headerlink" title="A - Yet Another Remainder"></a><strong>A - Yet Another Remainder</strong></h2><p>确实有循环节，但是我找到的规律比较浅显（没有发现固定的规律），没法抽象出本质的规律，所以陷入了操作不出来的困境。我是根据每个质数去找出他的模的系数，然而实际上，根据费马小定理，只需要进行一些简单的变换，就能发现循环节是p-1，从而直接找到答案。</p>
+<h2 id="A-Yet-Another-Remainder"><a href="#A-Yet-Another-Remainder" class="headerlink" title="A - Yet Another Remainder"></a><strong>A - Yet Another Remainder</strong></h2><p><strong>费马小定理</strong></p>
+<p>确实有循环节，但是我找到的规律比较浅显（没有发现固定的规律），没法抽象出本质的规律，所以陷入了操作不出来的困境。我是根据每个质数去找出他的模的系数，然而实际上，根据费马小定理，只需要进行一些简单的变换（主要是我这都不知道），就能发现循环节是p-1，从而直接找到答案。</p>
 <p>以下为简要证明：</p>
 <blockquote>
 <p>费马小定理：a^p^ ≡ a (mod p)</p>
@@ -282,7 +283,8 @@
 
 
 
-<h2 id="B-Non-decreasing-Array"><a href="#B-Non-decreasing-Array" class="headerlink" title="B -  Non-decreasing Array"></a><strong>B -  Non-decreasing Array</strong></h2><p>每次操作为了使得最终方差尽可能大，我们要贪心的消去尽可能多的“过渡数”——来自大睿老师</p>
+<h2 id="B-Non-decreasing-Array"><a href="#B-Non-decreasing-Array" class="headerlink" title="B -  Non-decreasing Array"></a><strong>B -  Non-decreasing Array</strong></h2><p><strong>dp</strong></p>
+<p>每次操作为了使得最终方差尽可能大，我们要贪心的消去尽可能多的“过渡数”——来自大睿老师</p>
 <p>所以对于一次操作，可以删去中间的一个数，然后把后面的变成相邻的（也就等价于再删去一个数）</p>
 <p>即 <strong>每次操作等价于删去两个数</strong>，那么删什么数咋删呢，可以考虑dp</p>
 <p>看到了一个比较巧妙的表示方法：<code>f[i][j]:1~i,删了j个数</code></p>
@@ -292,7 +294,14 @@
 
 
 
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+<h2 id="L-Quadruple"><a href="#L-Quadruple" class="headerlink" title="L -  Quadruple"></a><strong>L -  Quadruple</strong></h2><p><strong>容斥+dp</strong></p>
+<p>题意：问区间内出现的 “ICPC”个数　</p>
+<p>分析：用前缀和。[L, R] 内出现的 ICPC 个数就是 ICPC[R] - ICPC[L-1]</p>
+<p><strong>但是这只记录了结尾，也就是说，在L那里可能会有ICPC延伸出去了，即 在L之前出现</strong></p>
+<p>具体而言，对于L处的串，可能会出现 I+CPC，IC+PC，ICP+C这种出界的情况</p>
+<p>所以答案为： <code>ICPC[l,r] -(I[1,l-1] * CPC[l,r] + IC[1,l-1] * PC[l,r] + ICP[1,l-1] * C[l,r])</code>，就是ICPC容斥掉不在此区间内的那些</p>
+<p>这个输入太恶心了，取模好难写呜呜（感觉很难调，明天再写（划掉</p>
+
     </div>
 
     
@@ -372,7 +381,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#The-2022-ICPC-Asia-Regionals-Online-Contest-II-%E9%83%A8%E5%88%86%E9%A2%98%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">The 2022 ICPC Asia Regionals Online Contest (II) 部分题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#E-An-Interesting-Sequence"><span class="nav-number">1.1.</span> <span class="nav-text">E - An Interesting Sequence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#J-A-Game-about-Increasing-Sequences"><span class="nav-number">1.2.</span> <span class="nav-text">J - A Game about Increasing Sequences</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Yet-Another-Remainder"><span class="nav-number">1.3.</span> <span class="nav-text">A - Yet Another Remainder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-Infinity-Tree"><span class="nav-number">1.4.</span> <span class="nav-text">F -  Infinity Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Non-decreasing-Array"><span class="nav-number">1.5.</span> <span class="nav-text">B -  Non-decreasing Array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.6.</span> <span class="nav-text"></span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#The-2022-ICPC-Asia-Regionals-Online-Contest-II-%E9%83%A8%E5%88%86%E9%A2%98%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">The 2022 ICPC Asia Regionals Online Contest (II) 部分题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#E-An-Interesting-Sequence"><span class="nav-number">1.1.</span> <span class="nav-text">E - An Interesting Sequence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#J-A-Game-about-Increasing-Sequences"><span class="nav-number">1.2.</span> <span class="nav-text">J - A Game about Increasing Sequences</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Yet-Another-Remainder"><span class="nav-number">1.3.</span> <span class="nav-text">A - Yet Another Remainder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-Infinity-Tree"><span class="nav-number">1.4.</span> <span class="nav-text">F -  Infinity Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Non-decreasing-Array"><span class="nav-number">1.5.</span> <span class="nav-text">B -  Non-decreasing Array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-Quadruple"><span class="nav-number">1.6.</span> <span class="nav-text">L -  Quadruple</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
