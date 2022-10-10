@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="粘一下代码，或许复习的时候要用？ （事实是根本不会再看第二遍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【数据结构OJ】实验5-串应用">
+<meta property="og:url" content="http://example.com/2022/10/10/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84OJ%E3%80%91%E5%AE%9E%E9%AA%8C5-%E4%B8%B2%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:site_name" content="Sakana~">
+<meta property="og:description" content="粘一下代码，或许复习的时候要用？ （事实是根本不会再看第二遍">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-10T11:59:18.000Z">
+<meta property="article:modified_time" content="2022-10-10T12:07:43.552Z">
+<meta property="article:author" content="cting">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/10/10/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84OJ%E3%80%91%E5%AE%9E%E9%AA%8C5-%E4%B8%B2%E5%BA%94%E7%94%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>【数据结构OJ】实验5-串应用 | Sakana~</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/custom_css_source.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Sakana~</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-school-flag fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-satellite-dish fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tower-cell fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fish fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-jet-fighter-up fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-seedling fa-fw"></i>日程表</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+<!-- 点击特效 -->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+<script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+<!-- 阅读进度条 -->
+<div class="top-scroll-bar"></div>
+
+
+
+<!-- 网易云 -->
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1939401645&auto=1&height=66"></iframe>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/10/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84OJ%E3%80%91%E5%AE%9E%E9%AA%8C5-%E4%B8%B2%E5%BA%94%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s2.loli.net/2022/08/29/YyF3NStnorTxIUd.png">
+      <meta itemprop="name" content="cting">
+      <meta itemprop="description" content="Sakana~~~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sakana~">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【数据结构OJ】实验5-串应用
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-10-10 19:59:18 / 修改时间：20:07:43" itemprop="dateCreated datePublished" datetime="2022-10-10T19:59:18+08:00">2022-10-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" itemprop="url" rel="index"><span itemprop="name">专业课</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p> 粘一下代码，或许复习的时候要用？</p>
+<p>（事实是根本不会再看第二遍</p>
+<span id="more"></span>
+
+<h1 id="【数据结构OJ】实验5-串应用"><a href="#【数据结构OJ】实验5-串应用" class="headerlink" title="【数据结构OJ】实验5-串应用"></a>【数据结构OJ】实验5-串应用</h1><h2 id="A-DS串应用–KMP算法"><a href="#A-DS串应用–KMP算法" class="headerlink" title="A. DS串应用–KMP算法"></a>A. DS串应用–KMP算法</h2><p>next改一改就行</p>
+<figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line">string s, p;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Next</span><span class="params">(string &amp;p, vector&lt;<span class="type">int</span>&gt; &amp;ne)</span></span>&#123;</span><br><span class="line">    <span class="comment">//ne[0] = -1;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt; n; i ++)&#123;</span><br><span class="line">        <span class="keyword">while</span> (j &amp;&amp; p[i] != p[j])</span><br><span class="line">            j = ne[j - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (p[i] == p[j])</span><br><span class="line">            j ++;</span><br><span class="line">        ne[i] = j;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">KMP</span> <span class="params">(string &amp;s, string &amp;p, <span class="type">int</span> begin)</span></span>&#123;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">ne</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="built_in">Next</span> (p, ne);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;-1 &quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)     cout &lt;&lt; ne[i] &lt;&lt; <span class="string">&#x27; &#x27;</span>;   cout &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = begin, j = <span class="number">0</span>; i &lt; m; i ++)&#123;</span><br><span class="line">        <span class="keyword">while</span> (j &amp;&amp; s[i] != p[j])</span><br><span class="line">            j = ne[j - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (s[i] == p[j])</span><br><span class="line">            j ++;</span><br><span class="line">        <span class="keyword">if</span> (j == n)&#123;</span><br><span class="line">            cout &lt;&lt; i - n + <span class="number">2</span> &lt;&lt; endl;</span><br><span class="line">            j = ne[j - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;0\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; s &gt;&gt; p;</span><br><span class="line">    n = p.<span class="built_in">size</span> (), m = s.<span class="built_in">size</span> ();</span><br><span class="line">    <span class="built_in">KMP</span> (s, p, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t --) &#123;</span><br><span class="line">        <span class="built_in">solve</span> ();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="B-DS串应用—最长重复子串"><a href="#B-DS串应用—最长重复子串" class="headerlink" title="B. DS串应用—最长重复子串"></a>B. DS串应用—最长重复子串</h2><figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">match</span> <span class="params">(string s)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n = s.<span class="built_in">size</span> ();</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>)     <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">    string p, ans;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> len = n / <span class="number">2</span>; len &gt; <span class="number">0</span>; len --) &#123; <span class="comment">//枚举子串长度</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - len;  i++) &#123; <span class="comment">//枚举子串起点</span></span><br><span class="line">			p = s.<span class="built_in">substr</span>(i, len);</span><br><span class="line">			ans = s.<span class="built_in">substr</span>(i + len); <span class="comment">//在后面看看能不能找到重复串，起点保证了不交叉</span></span><br><span class="line">			<span class="keyword">if</span> (ans.<span class="built_in">find</span>(p) != string::npos)	<span class="keyword">return</span> len; <span class="comment">//string::npos的值表示直到字符串末尾的所有字符</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">	string s;</span><br><span class="line">    cin &gt;&gt; s;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">match</span> (s) &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> t;</span><br><span class="line">	cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t --) &#123;</span><br><span class="line">        <span class="built_in">solve</span> ();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="C-DS串应用–串替换"><a href="#C-DS串应用–串替换" class="headerlink" title="C. DS串应用–串替换"></a>C. DS串应用–串替换</h2><figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Next</span><span class="params">(string &amp;p, vector&lt;<span class="type">int</span>&gt; &amp;ne)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt; n; i ++)&#123;</span><br><span class="line">        <span class="keyword">while</span> (j &amp;&amp; p[i] != p[j])</span><br><span class="line">            j = ne[j - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (p[i] == p[j])</span><br><span class="line">            j ++;</span><br><span class="line">        ne[i] = j;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">KMP</span> <span class="params">(string &amp;s, string &amp;p, <span class="type">int</span> begin, string q)</span></span>&#123;</span><br><span class="line">    vector &lt;<span class="type">int</span>&gt; <span class="built_in">ne</span>(n);</span><br><span class="line">    <span class="built_in">Next</span> (p, ne);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = begin, j = <span class="number">0</span>; i &lt; m; i ++)&#123;</span><br><span class="line">        <span class="keyword">while</span> (j &amp;&amp; s[i] != p[j])</span><br><span class="line">            j = ne[j - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (s[i] == p[j])</span><br><span class="line">            j ++;</span><br><span class="line">        <span class="keyword">if</span> (j == n)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>; k &lt; i - n + <span class="number">1</span>; k++) cout &lt;&lt; s[k];</span><br><span class="line">            cout &lt;&lt; q;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> k = i + <span class="number">1</span>; k &lt; m; k++) cout &lt;&lt; s[k];</span><br><span class="line">            cout &lt;&lt; endl;</span><br><span class="line">            <span class="comment">// j = ne[j - 1];</span></span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; s &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    string s, p, q;</span><br><span class="line">    cin &gt;&gt; s &gt;&gt; p &gt;&gt; q;</span><br><span class="line">    n = p.<span class="built_in">size</span> (), m = s.<span class="built_in">size</span> ();</span><br><span class="line">    cout &lt;&lt; s &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">KMP</span> (s, p, <span class="number">0</span>, q);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t --) &#123;</span><br><span class="line">        <span class="built_in">solve</span> ();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="D-串应用-计算一个串的最长的真前后缀"><a href="#D-串应用-计算一个串的最长的真前后缀" class="headerlink" title="D. 串应用- 计算一个串的最长的真前后缀"></a>D. 串应用- 计算一个串的最长的真前后缀</h2><figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Next</span><span class="params">(string &amp;p)</span></span>&#123;</span><br><span class="line">    vector &lt;<span class="type">int</span>&gt; <span class="built_in">ne</span>(n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt; n; i ++)&#123;</span><br><span class="line">        <span class="keyword">while</span> (j &amp;&amp; p[i] != p[j])</span><br><span class="line">            j = ne[j - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (p[i] == p[j])</span><br><span class="line">            j ++;</span><br><span class="line">        ne[i] = j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> x = n - ne[n<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">if</span> (x == n)     <span class="built_in">puts</span> (<span class="string">&quot;empty&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = x; i &lt; n; i++)     cout &lt;&lt; p[i];</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    string p;</span><br><span class="line">    cin &gt;&gt; p;</span><br><span class="line">    n = p.<span class="built_in">size</span> ();</span><br><span class="line">    <span class="built_in">Next</span> (p);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t --) &#123;</span><br><span class="line">        <span class="built_in">solve</span> ();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="E-子串循环问题-Ver-I"><a href="#E-子串循环问题-Ver-I" class="headerlink" title="E. 子串循环问题 (Ver. I)"></a>E. 子串循环问题 (Ver. I)</h2><figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Next</span><span class="params">(string &amp;p)</span></span>&#123;</span><br><span class="line">    vector &lt;<span class="type">int</span>&gt; <span class="built_in">ne</span>(n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt; n; i ++)&#123;</span><br><span class="line">        <span class="keyword">while</span> (j &amp;&amp; p[i] != p[j])</span><br><span class="line">            j = ne[j - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (p[i] == p[j])</span><br><span class="line">            j ++;</span><br><span class="line">        ne[i] = j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> x = n - ne[n<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">if</span> (n % x == <span class="number">0</span> &amp;&amp; ne[n<span class="number">-1</span>])	cout &lt;&lt; <span class="string">&quot;0\n&quot;</span>;</span><br><span class="line">    <span class="keyword">else</span>	cout &lt;&lt; x -  n % x &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    string p;</span><br><span class="line">    cin &gt;&gt; p;</span><br><span class="line">    n = p.<span class="built_in">size</span> ();</span><br><span class="line">    <span class="built_in">Next</span> (p);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t --) &#123;</span><br><span class="line">        <span class="built_in">solve</span> ();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="F-可重叠子串-Ver-I"><a href="#F-可重叠子串-Ver-I" class="headerlink" title="F. 可重叠子串 (Ver. I)"></a>F. 可重叠子串 (Ver. I)</h2><figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Next</span><span class="params">(string &amp;p, vector&lt;<span class="type">int</span>&gt; &amp;ne)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt; n; i ++)&#123;</span><br><span class="line">        <span class="keyword">while</span> (j &amp;&amp; p[i] != p[j])</span><br><span class="line">            j = ne[j - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (p[i] == p[j])</span><br><span class="line">            j ++;</span><br><span class="line">        ne[i] = j;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">KMP</span> <span class="params">(string &amp;s, string &amp;p, <span class="type">int</span> begin)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    vector &lt;<span class="type">int</span>&gt; <span class="built_in">ne</span>(n);</span><br><span class="line">    <span class="built_in">Next</span> (p, ne);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = begin, j = <span class="number">0</span>; i &lt; m; i ++)&#123;</span><br><span class="line">        <span class="keyword">while</span> (j &amp;&amp; s[i] != p[j])</span><br><span class="line">            j = ne[j - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (s[i] == p[j])</span><br><span class="line">            j ++;</span><br><span class="line">        <span class="keyword">if</span> (j == n)&#123;</span><br><span class="line">            ans ++;</span><br><span class="line">            j = ne[j - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; s &gt;&gt; t;</span><br><span class="line">    m = s.<span class="built_in">size</span> ();</span><br><span class="line">    <span class="keyword">while</span> (t --) &#123;</span><br><span class="line">        string p;</span><br><span class="line">        cin &gt;&gt; p;</span><br><span class="line">        cout &lt;&lt; p &lt;&lt; <span class="string">&quot;:&quot;</span>;</span><br><span class="line">        n = p.<span class="built_in">size</span> ();</span><br><span class="line">        vector &lt;<span class="type">int</span>&gt; <span class="built_in">ne</span> (n);</span><br><span class="line">        <span class="built_in">KMP</span> (s, p, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t --) &#123;</span><br><span class="line">        <span class="built_in">solve</span> ();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="G-方程解析（string"><a href="#G-方程解析（string" class="headerlink" title="G. 方程解析（string)"></a>G. 方程解析（string)</h2><figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span> <span class="params">(string s, <span class="type">bool</span> find)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!find)  cout &lt;&lt; <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        cout &lt;&lt; s;</span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">empty</span> () || (s.<span class="built_in">size</span> () == <span class="number">1</span> &amp;&amp; s[<span class="number">0</span>] == <span class="string">&#x27;-&#x27;</span>))  cout &lt;&lt; <span class="number">1</span>;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">string s;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n = s.<span class="built_in">size</span> ();</span><br><span class="line">    string a = <span class="string">&quot;&quot;</span>, b = <span class="string">&quot;&quot;</span>, c = <span class="string">&quot;&quot;</span>; <span class="comment">//三个系数</span></span><br><span class="line">    <span class="type">bool</span> f1 = <span class="literal">false</span>, f2 = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//先找二次方</span></span><br><span class="line">    <span class="type">int</span> st = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[i] == <span class="string">&#x27;^&#x27;</span>) &#123; <span class="comment">//一定是二次方</span></span><br><span class="line">            f1 = <span class="literal">true</span>;</span><br><span class="line">            st = i + <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; i - <span class="number">1</span>; j++)  a = a + s[j];</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//一次</span></span><br><span class="line">    <span class="keyword">if</span> (st == <span class="number">-1</span>)   st = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//cout &lt;&lt; &quot;st=&quot; &lt;&lt; st &lt;&lt; endl;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = st; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[i] == <span class="string">&#x27;x&#x27;</span>) &#123;</span><br><span class="line">            f2 = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span> (a, f1), cout &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    <span class="keyword">if</span> (!f2) &#123;    </span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;0 &quot;</span>;</span><br><span class="line">        <span class="keyword">if</span> (st &gt;= n)    cout &lt;&lt; <span class="string">&quot;0\n&quot;</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = st; i &lt; n; i++)    cout &lt;&lt; s[i];</span><br><span class="line">            cout &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="type">int</span> i;</span><br><span class="line">        <span class="keyword">for</span> (i = st; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s[i] == <span class="string">&#x27;x&#x27;</span>)    <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">if</span> (s[i] == <span class="string">&#x27;+&#x27;</span>)    <span class="keyword">continue</span>;</span><br><span class="line">            b = b + s[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">print</span> (b, f2), cout &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">        i ++;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= n) &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;0\n&quot;</span>;</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s[i] == <span class="string">&#x27;+&#x27;</span>)    <span class="keyword">continue</span>;</span><br><span class="line">            cout &lt;&lt; s[i];</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// for (int i = n - 1; i &gt;= st; i++) &#123;</span></span><br><span class="line">    <span class="comment">//     if (s[i] == &#x27;x&#x27;) &#123;</span></span><br><span class="line">    <span class="comment">//         f2 = true;</span></span><br><span class="line">    <span class="comment">//         for (int j = st; j &lt; i; j++) &#123;</span></span><br><span class="line">    <span class="comment">//             if (s[j] == &#x27;+&#x27;)    continue;</span></span><br><span class="line">    <span class="comment">//             b = b + s[j];</span></span><br><span class="line">    <span class="comment">//         &#125;</span></span><br><span class="line">    <span class="comment">//         st = i;</span></span><br><span class="line">    <span class="comment">//         break;</span></span><br><span class="line">    <span class="comment">//     &#125;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; s)    <span class="built_in">solve</span> ();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出系数</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>总结：kmp + 乱搞</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/10/02/%E7%89%9B%E5%AE%A2%E5%B0%8F%E7%99%BD%E6%9C%88%E8%B5%9B58-A-C/" rel="prev" title="牛客小白月赛58 A-E">
+      <i class="fa fa-chevron-left"></i> 牛客小白月赛58 A-E
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84OJ%E3%80%91%E5%AE%9E%E9%AA%8C5-%E4%B8%B2%E5%BA%94%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">【数据结构OJ】实验5-串应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-DS%E4%B8%B2%E5%BA%94%E7%94%A8%E2%80%93KMP%E7%AE%97%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">A. DS串应用–KMP算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-DS%E4%B8%B2%E5%BA%94%E7%94%A8%E2%80%94%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E4%B8%B2"><span class="nav-number">1.2.</span> <span class="nav-text">B. DS串应用—最长重复子串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-DS%E4%B8%B2%E5%BA%94%E7%94%A8%E2%80%93%E4%B8%B2%E6%9B%BF%E6%8D%A2"><span class="nav-number">1.3.</span> <span class="nav-text">C. DS串应用–串替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-%E4%B8%B2%E5%BA%94%E7%94%A8-%E8%AE%A1%E7%AE%97%E4%B8%80%E4%B8%AA%E4%B8%B2%E7%9A%84%E6%9C%80%E9%95%BF%E7%9A%84%E7%9C%9F%E5%89%8D%E5%90%8E%E7%BC%80"><span class="nav-number">1.4.</span> <span class="nav-text">D. 串应用- 计算一个串的最长的真前后缀</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-%E5%AD%90%E4%B8%B2%E5%BE%AA%E7%8E%AF%E9%97%AE%E9%A2%98-Ver-I"><span class="nav-number">1.5.</span> <span class="nav-text">E. 子串循环问题 (Ver. I)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-%E5%8F%AF%E9%87%8D%E5%8F%A0%E5%AD%90%E4%B8%B2-Ver-I"><span class="nav-number">1.6.</span> <span class="nav-text">F. 可重叠子串 (Ver. I)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#G-%E6%96%B9%E7%A8%8B%E8%A7%A3%E6%9E%90%EF%BC%88string"><span class="nav-number">1.7.</span> <span class="nav-text">G. 方程解析（string)</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="cting"
+      src="https://s2.loli.net/2022/08/29/YyF3NStnorTxIUd.png">
+  <p class="site-author-name" itemprop="name">cting</p>
+  <div class="site-description" itemprop="description">Sakana~~~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TTsohandsome" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TTsohandsome" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2397161038@qq.com" title="E-Mail → mailto:2397161038@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://n-wn.github.io/" title="https:&#x2F;&#x2F;n-wn.github.io&#x2F;" rel="noopener" target="_blank">全能又耐心的LOV3大佬</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://marioctx.com/" title="https:&#x2F;&#x2F;marioctx.com&#x2F;" rel="noopener" target="_blank">什么都会的ctx大佬</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://fangd.net/" title="https:&#x2F;&#x2F;fangd.net&#x2F;" rel="noopener" target="_blank">明明是嘉心糖却还要嘴硬的fd</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://only1cherish.github.io/" title="https:&#x2F;&#x2F;only1cherish.github.io&#x2F;" rel="noopener" target="_blank">我可爱的cherish宝</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.tokoyomi.xyz/" title="https:&#x2F;&#x2F;www.tokoyomi.xyz&#x2F;" rel="noopener" target="_blank">CTF佬zzx</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://ttsohandsome.github.io/" title="https:&#x2F;&#x2F;ttsohandsome.github.io&#x2F;" rel="noopener" target="_blank">(广告位招租)</a>
+        </li>
+    </ul>
+  </div>
+
+
+
+<div id="aplayer" class="aplayer"></div>
+<script src="/js/src/custom/APlayer.min.js"></script>
+<script type="text/javascript">
+var ap = new APlayer({
+  element: document.getElementById('aplayer'),         // Optional, player element
+  narrow: false,         // Optional, narrow style
+  autoplay: false,              // Optional, autoplay song(s), not supported by mobile browsers
+  showlrc: 0,     // Optional, show lrc, can be 0, 1, 2, see: ###With lrc
+  mutex: true,                 // Optional, pause other players when this player playing
+  theme: '#e6d0b2',          // Optional, theme color, default: #b7daff
+  mode: 'random',      // Optional, play mode, can be `random` `single` `circulation`(loop) `order`(no loop), default: `circulation`
+  preload: 'metadata',               // Optional, the way to load music, can be 'none' 'metadata' 'auto', default: 'auto'
+  listmaxheight: '513px',      // Optional, max height of play list
+  music: [{
+    title: '双笙 囧菌 - 世末歌者',
+    author: '双笙 囧菌',
+    url: 'https://qianling-1254036047.cos.ap-chengdu.myqcloud.com/music/%E5%8F%8C%E7%AC%99%20%E5%9B%A7%E8%8F%8C%20-%20%E4%B8%96%E6%9C%AB%E6%AD%8C%E8%80%85.mp3',
+    pic: 'https://qianling-1254036047.cos.ap-chengdu.myqcloud.com/music/%E5%8F%8C%E7%AC%99%20%E5%9B%A7%E8%8F%8C%20-%20%E4%B8%96%E6%9C%AB%E6%AD%8C%E8%80%85.webp',
+  }, {
+    title: '幹物女(WeiWei)',
+    author: '封茗囧菌',
+    url: 'https://qianling-1254036047.cos.ap-chengdu.myqcloud.com/music/%E5%B0%81%E8%8C%97%E5%9B%A7%E8%8F%8C%20-%20%E5%B9%B9%E7%89%A9%E5%A5%B3(WeiWei).mp3',
+    pic: 'https://qianling-1254036047.cos.ap-chengdu.myqcloud.com/music/%E5%B0%81%E8%8C%97%E5%9B%A7%E8%8F%8C%20-%20%E5%B9%B9%E7%89%A9%E5%A5%B3(WeiWei).webp',
+  }]
+  });
+</script>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cting</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
