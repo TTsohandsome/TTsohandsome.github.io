@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Codeforces Round  #827 (Div. 4)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codeforces Round 827 (Div. 4)">
+<meta property="og:url" content="http://example.com/2022/10/14/Codeforces-Round-827-Div-4/index.html">
+<meta property="og:site_name" content="Sakana~">
+<meta property="og:description" content="Codeforces Round  #827 (Div. 4)">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-14T05:26:50.000Z">
+<meta property="article:modified_time" content="2022-10-14T05:27:49.831Z">
+<meta property="article:author" content="cting">
+<meta property="article:tag" content="Codeforces">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/10/14/Codeforces-Round-827-Div-4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Codeforces Round 827 (Div. 4) | Sakana~</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/custom_css_source.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Sakana~</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-school-flag fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-satellite-dish fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tower-cell fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fish fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-jet-fighter-up fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-seedling fa-fw"></i>日程表</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+<!-- 点击特效 -->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+<script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+<!-- 阅读进度条 -->
+<div class="top-scroll-bar"></div>
+
+
+
+<!-- 网易云 -->
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1939401645&auto=1&height=66"></iframe>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/14/Codeforces-Round-827-Div-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s2.loli.net/2022/08/29/YyF3NStnorTxIUd.png">
+      <meta itemprop="name" content="cting">
+      <meta itemprop="description" content="Sakana~~~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sakana~">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Codeforces Round 827 (Div. 4)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-10-14 13:26:50 / 修改时间：13:27:49" itemprop="dateCreated datePublished" datetime="2022-10-14T13:26:50+08:00">2022-10-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces-%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">Codeforces 题解</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Codeforces Round  #827 (Div. 4)    </p>
+<span id="more"></span>
+
+<h1 id="Codeforces-Round-827-Div-4"><a href="#Codeforces-Round-827-Div-4" class="headerlink" title="Codeforces Round #827 (Div. 4)"></a>Codeforces Round #827 (Div. 4)</h1><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1742">https://codeforces.com/contest/1742</a><br>人傻逼了，C题卡了半天心态直接炸掉，第二天起来过了FG，麻</p>
+<h2 id="A-Sum"><a href="#A-Sum" class="headerlink" title="A. Sum"></a>A. Sum</h2><figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> a, b, c;</span><br><span class="line">    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;</span><br><span class="line">    <span class="keyword">if</span> (a == b + c || b == a + c || c == a + b) <span class="built_in">puts</span> (<span class="string">&quot;YES&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span>    <span class="built_in">puts</span> (<span class="string">&quot;NO&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t --)    <span class="built_in">solve</span> ();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="B-Increasing"><a href="#B-Increasing" class="headerlink" title="B. Increasing"></a>B. Increasing</h2><figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">105</span>;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    set &lt;<span class="type">int</span>&gt; s;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="type">int</span> x;</span><br><span class="line">        cin &gt;&gt; x;</span><br><span class="line">        s.<span class="built_in">insert</span> (x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (s.<span class="built_in">size</span>() == n)  <span class="built_in">puts</span> (<span class="string">&quot;YES&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span>    <span class="built_in">puts</span> (<span class="string">&quot;NO&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t --)    <span class="built_in">solve</span> ();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-Stripes"><a href="#C-Stripes" class="headerlink" title="C. Stripes"></a>C. Stripes</h2><p>注意行是R，列是B</p>
+<figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">char</span> a[<span class="number">10</span>][<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">8</span>; i++) &#123;</span><br><span class="line">        string s;</span><br><span class="line">        cin &gt;&gt; s;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">8</span>; j++) &#123;</span><br><span class="line">            a[i][j] = s[j<span class="number">-1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, j; i &lt;= <span class="number">8</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= <span class="number">8</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[i][j] != <span class="string">&#x27;R&#x27;</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//cout &lt;&lt; i &lt;&lt; &#x27; &#x27; &lt;&lt; j &lt;&lt; endl;</span></span><br><span class="line">        <span class="keyword">if</span> (j == <span class="number">9</span>) &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&#x27;R&#x27;</span> &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>, i; j &lt;= <span class="number">8</span>; j++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= <span class="number">8</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[i][j] != <span class="string">&#x27;B&#x27;</span>)  <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//cout &lt;&lt; i &lt;&lt; &#x27; &#x27; &lt;&lt; j &lt;&lt; endl;</span></span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">9</span>) &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&#x27;B&#x27;</span> &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t --)    <span class="built_in">solve</span> ();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="D-Coprime"><a href="#D-Coprime" class="headerlink" title="D. Coprime"></a>D. Coprime</h2><p>因为ai最大只有1000，所以对于每个ai可以查找所有与其互质的数的出现下标。gcd要预处理，不然会T</p>
+<figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; pii;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">2e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> n, a[N], pos[<span class="number">1005</span>]; <span class="comment">//只存max</span></span><br><span class="line"><span class="type">int</span> gcd[<span class="number">1005</span>][<span class="number">1005</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pre</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">1000</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">1000</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (__gcd (i, j) == <span class="number">1</span>)  gcd[i][j] = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="built_in">memset</span> (pos, <span class="number">0</span>, <span class="keyword">sizeof</span> pos);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)    cin &gt;&gt; a[i], pos[a[i]] = i;</span><br><span class="line">    ll ans = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">1000</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!pos[j] || (!gcd[j][a[i]] &amp;&amp; !gcd[a[i]][j]))     <span class="keyword">continue</span>;</span><br><span class="line">            ans = <span class="built_in">max</span> (<span class="number">1ll</span>*pos[j] + i, ans);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">pre</span> ();</span><br><span class="line">    <span class="comment">//test ();</span></span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t --)    <span class="built_in">solve</span> ();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//预处理1-1000互素</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="E-Scuza"><a href="#E-Scuza" class="headerlink" title="E. Scuza"></a>E. Scuza</h2><p>二分 + 前缀和<br>小trick: 对于非单调的原序列a，可以处理出一个maxn数组，记录<strong>截至目前的最大值</strong>，使其变为单调，就可以二分了。</p>
+<figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">2e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> n, m, a[N], b[N], sum[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">        sum[i] = sum[i<span class="number">-1</span>] + a[i];</span><br><span class="line">        b[i] = <span class="built_in">max</span> (b[i<span class="number">-1</span>], a[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (m --) &#123;</span><br><span class="line">        <span class="type">int</span> x;</span><br><span class="line">        cin &gt;&gt; x;</span><br><span class="line">        <span class="type">int</span> pos = <span class="built_in">upper_bound</span> (b + <span class="number">1</span>, b + n + <span class="number">1</span>, x) - b;</span><br><span class="line">        <span class="comment">//cout &lt;&lt; &quot;pos=&quot; &lt;&lt; pos &lt;&lt; endl;</span></span><br><span class="line">        cout &lt;&lt; sum[pos - <span class="number">1</span>] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t --)    <span class="built_in">solve</span> ();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果a[i]&gt;= x就可以加入</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="F-Smaller"><a href="#F-Smaller" class="headerlink" title="F. Smaller"></a>F. Smaller</h2><p>因为rearrange是打乱顺序，全部重排，为了使得s尽可能小，我们一定会把’a’放在最前面；为了使得t尽可能大，我们一定会把t中最大的字符放在前面。<br>那么思路就出来了，对于每次新增，只需记录新加入了多少个字符（这是为了二者全为a的时候比较长度）。<br>情况可划分为：</p>
+<ol>
+<li>t中存在一个比’a’大的字符，则 YES，因为s第一个一定是a,而t得第一个不是。</li>
+<li>t中不存在比’a’大的字符，即t全为’a’，s中存在比’a’大的字符，则 NO，不管怎么排都有 s &gt; t。</li>
+<li>t和s中都不存在比’a’大的字符，即s,t全为’a’，则统计二者长度，更长的字典序更大。</li>
+<li>其余情况均为 YES。<figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> m;</span><br><span class="line">    cin &gt;&gt; m;</span><br><span class="line">    <span class="type">bool</span> fb = <span class="literal">false</span>, fa = <span class="literal">false</span>;</span><br><span class="line">    <span class="type">int</span> cnts = <span class="number">0</span>, cntt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (m --) &#123;</span><br><span class="line">        <span class="type">int</span> op, k;</span><br><span class="line">        string s;</span><br><span class="line">        cin &gt;&gt; op &gt;&gt; k &gt;&gt; s;</span><br><span class="line">        <span class="keyword">if</span> (op == <span class="number">1</span>) &#123;</span><br><span class="line">            cnts += s.<span class="built_in">size</span> () * k;</span><br><span class="line">            <span class="keyword">if</span> (!fa &amp;&amp; !fb) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span> (); i++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (s[i] &gt; <span class="string">&#x27;a&#x27;</span>) &#123;</span><br><span class="line">                        fa = <span class="literal">true</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            cntt += s.<span class="built_in">size</span> () * k;</span><br><span class="line">            <span class="keyword">if</span> (!fb) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span> (); i++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (s[i] &gt; <span class="string">&#x27;a&#x27;</span>) &#123;</span><br><span class="line">                        fb = <span class="literal">true</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (fb)   <span class="built_in">puts</span> (<span class="string">&quot;YES&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (fa || cnts &gt;= cntt) <span class="built_in">puts</span> (<span class="string">&quot;NO&quot;</span>);</span><br><span class="line">            <span class="keyword">else</span>    <span class="built_in">puts</span> (<span class="string">&quot;YES&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t --)    <span class="built_in">solve</span> ();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="G-Orray"><a href="#G-Orray" class="headerlink" title="G. Orray"></a>G. Orray</h2><p>暴力<br>第一个肯定是最大的，接着就枚举能够使得or和变大的即可<br>如果maxn不更新了，就表示已经找到最大的了。</p>
+<figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">2e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> a[N], n;</span><br><span class="line"><span class="type">bool</span> used[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)    cin &gt;&gt; a[i], used[i] = <span class="literal">false</span>;</span><br><span class="line">    <span class="built_in">sort</span> (a + <span class="number">1</span>, a + n + <span class="number">1</span>, greater &lt;<span class="type">int</span>&gt; ());</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> sum = a[<span class="number">1</span>];</span><br><span class="line">    cout &lt;&lt; a[<span class="number">1</span>] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    used[<span class="number">1</span>] = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="type">int</span> maxn = <span class="number">-1</span>, pos = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (used[i])    <span class="keyword">continue</span>;</span><br><span class="line">            <span class="type">int</span> dx = (a[i] | sum) - sum;</span><br><span class="line">            <span class="keyword">if</span> (dx &gt; maxn)  maxn = dx, pos = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (maxn &lt;= <span class="number">0</span>)  <span class="keyword">break</span>; <span class="comment">//没得更新了</span></span><br><span class="line">        used[pos] = <span class="literal">true</span>, sum |= a[pos];</span><br><span class="line">        cout &lt;&lt; a[pos] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!used[i])   cout &lt;&lt; a[i] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t --)    <span class="built_in">solve</span> ();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我是大傻逼呜</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Codeforces/" rel="tag"># Codeforces</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/10/13/Codeforces-Round-826-Div-3-A-E/" rel="prev" title="Codeforces Round 826 (Div. 3)">
+      <i class="fa fa-chevron-left"></i> Codeforces Round 826 (Div. 3)
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Codeforces-Round-827-Div-4"><span class="nav-number">1.</span> <span class="nav-text">Codeforces Round #827 (Div. 4)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Sum"><span class="nav-number">1.1.</span> <span class="nav-text">A. Sum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Increasing"><span class="nav-number">1.2.</span> <span class="nav-text">B. Increasing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Stripes"><span class="nav-number">1.3.</span> <span class="nav-text">C. Stripes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Coprime"><span class="nav-number">1.4.</span> <span class="nav-text">D. Coprime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Scuza"><span class="nav-number">1.5.</span> <span class="nav-text">E. Scuza</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-Smaller"><span class="nav-number">1.6.</span> <span class="nav-text">F. Smaller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#G-Orray"><span class="nav-number">1.7.</span> <span class="nav-text">G. Orray</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="cting"
+      src="https://s2.loli.net/2022/08/29/YyF3NStnorTxIUd.png">
+  <p class="site-author-name" itemprop="name">cting</p>
+  <div class="site-description" itemprop="description">Sakana~~~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TTsohandsome" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TTsohandsome" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2397161038@qq.com" title="E-Mail → mailto:2397161038@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://n-wn.github.io/" title="https:&#x2F;&#x2F;n-wn.github.io&#x2F;" rel="noopener" target="_blank">全能又耐心的LOV3大佬</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://marioctx.com/" title="https:&#x2F;&#x2F;marioctx.com&#x2F;" rel="noopener" target="_blank">什么都会的ctx大佬</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://fangd.net/" title="https:&#x2F;&#x2F;fangd.net&#x2F;" rel="noopener" target="_blank">明明是嘉心糖却还要嘴硬的fd</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://only1cherish.github.io/" title="https:&#x2F;&#x2F;only1cherish.github.io&#x2F;" rel="noopener" target="_blank">我可爱的cherish宝</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.tokoyomi.xyz/" title="https:&#x2F;&#x2F;www.tokoyomi.xyz&#x2F;" rel="noopener" target="_blank">CTF佬zzx</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://ttsohandsome.github.io/" title="https:&#x2F;&#x2F;ttsohandsome.github.io&#x2F;" rel="noopener" target="_blank">(广告位招租)</a>
+        </li>
+    </ul>
+  </div>
+
+
+
+<div id="aplayer" class="aplayer"></div>
+<script src="/js/src/custom/APlayer.min.js"></script>
+<script type="text/javascript">
+var ap = new APlayer({
+  element: document.getElementById('aplayer'),         // Optional, player element
+  narrow: false,         // Optional, narrow style
+  autoplay: false,              // Optional, autoplay song(s), not supported by mobile browsers
+  showlrc: 0,     // Optional, show lrc, can be 0, 1, 2, see: ###With lrc
+  mutex: true,                 // Optional, pause other players when this player playing
+  theme: '#e6d0b2',          // Optional, theme color, default: #b7daff
+  mode: 'random',      // Optional, play mode, can be `random` `single` `circulation`(loop) `order`(no loop), default: `circulation`
+  preload: 'metadata',               // Optional, the way to load music, can be 'none' 'metadata' 'auto', default: 'auto'
+  listmaxheight: '513px',      // Optional, max height of play list
+  music: [{
+    title: '双笙 囧菌 - 世末歌者',
+    author: '双笙 囧菌',
+    url: 'https://qianling-1254036047.cos.ap-chengdu.myqcloud.com/music/%E5%8F%8C%E7%AC%99%20%E5%9B%A7%E8%8F%8C%20-%20%E4%B8%96%E6%9C%AB%E6%AD%8C%E8%80%85.mp3',
+    pic: 'https://qianling-1254036047.cos.ap-chengdu.myqcloud.com/music/%E5%8F%8C%E7%AC%99%20%E5%9B%A7%E8%8F%8C%20-%20%E4%B8%96%E6%9C%AB%E6%AD%8C%E8%80%85.webp',
+  }, {
+    title: '幹物女(WeiWei)',
+    author: '封茗囧菌',
+    url: 'https://qianling-1254036047.cos.ap-chengdu.myqcloud.com/music/%E5%B0%81%E8%8C%97%E5%9B%A7%E8%8F%8C%20-%20%E5%B9%B9%E7%89%A9%E5%A5%B3(WeiWei).mp3',
+    pic: 'https://qianling-1254036047.cos.ap-chengdu.myqcloud.com/music/%E5%B0%81%E8%8C%97%E5%9B%A7%E8%8F%8C%20-%20%E5%B9%B9%E7%89%A9%E5%A5%B3(WeiWei).webp',
+  }]
+  });
+</script>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cting</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
