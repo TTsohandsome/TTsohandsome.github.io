@@ -28,7 +28,7 @@
 <meta property="og:description" content="公式挂掉太丑了就看这里">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-14T08:10:10.000Z">
-<meta property="article:modified_time" content="2022-10-14T08:47:38.848Z">
+<meta property="article:modified_time" content="2022-10-14T11:36:46.327Z">
 <meta property="article:author" content="cting">
 <meta property="article:tag" content="数论">
 <meta name="twitter:card" content="summary">
@@ -210,7 +210,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-10-14 16:10:10 / 修改时间：16:47:38" itemprop="dateCreated datePublished" datetime="2022-10-14T16:10:10+08:00">2022-10-14</time>
+              <time title="创建时间：2022-10-14 16:10:10 / 修改时间：19:36:46" itemprop="dateCreated datePublished" datetime="2022-10-14T16:10:10+08:00">2022-10-14</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,7 +236,22 @@
         <p>公式挂掉太丑了就<a target="_blank" rel="noopener" href="https://www.cnblogs.com/CTing/p/16791955.html">看这里</a></p>
 <span id="more"></span>
 
-<h1 id="数论2：同余，欧拉函数，逆元"><a href="#数论2：同余，欧拉函数，逆元" class="headerlink" title="数论2：同余，欧拉函数，逆元"></a>数论2：同余，欧拉函数，逆元</h1><p>$$<br>a\equiv b (\mod m) \leftrightarrow m|b-a\<br>a\equiv b(\mod m), a\equiv b (\mod n)\rightarrow a\equiv b(\mod[m,n])\<br>\bbox[yellow]{<br>(k,m)&#x3D;d, ka\equiv ka’(\mod m)\rightarrow a\equiv a’(\mod \frac md)}<br>$$<br>公式三证明：<br>$$<br>\because (k,m)&#x3D;d,\therefore(\frac kd, \frac md)&#x3D;1\<br>又\because m | k(a-a’)<br>\therefore \frac md|\frac kd(a-a’)\<br>又\because \frac md与\frac kd互质， \therefore \frac md | a-a’，得证<br>$$</p>
+<h1 id="数论2：同余，欧拉函数，逆元"><a href="#数论2：同余，欧拉函数，逆元" class="headerlink" title="数论2：同余，欧拉函数，逆元"></a>数论2：同余，欧拉函数，逆元</h1><h2 id="同余"><a href="#同余" class="headerlink" title="同余"></a>同余</h2><p>$$<br>a\equiv b (\mathrm{mod,,}  m) \leftrightarrow m|b-a\<br>a\equiv b(\mathrm{mod,,} m), a\equiv b (\mathrm{mod,,}n)\rightarrow a\equiv b(\mathrm{mod,,}[m,n])\<br>\bbox[yellow]{<br>(k,m)&#x3D;d, ka\equiv ka’(\mathrm{mod,,} m)\rightarrow a\equiv a’(\mathrm{mod,,} \frac md)}<br>$$</p>
+<p>公式三证明：<br>$$<br>\because (k,m)&#x3D;d,\therefore(\frac kd, \frac md)&#x3D;1\<br>又\because m | k(a-a’)<br>\therefore \frac md|\frac kd(a-a’)\<br>又\because \frac md与\frac kd互质， \therefore \frac md | a-a’，得证<br>$$</p>
+<p>公式三更一般的结论：<br>$$<br>ka\equiv ka’(\mathrm{mod,,} m)\rightarrow a\equiv a’(\mathrm{mod,,}  \frac m{(m,k)})<br>$$</p>
+<h2 id="线性同余方程"><a href="#线性同余方程" class="headerlink" title="线性同余方程"></a>线性同余方程</h2><p>$$<br>ax\equiv b(\mathrm{mod,,} m)\leftrightarrow ax+my&#x3D;b<br>$$</p>
+<p>对 $mx\equiv 0(\mathrm{mod,,}m),ax\equiv b(\mathrm{mod,,}m)$ 辗转相除</p>
+<p>还有一种计算方法比较好理解（来自dls）<br>$$<br>\begin{cases}<br>100x\equiv 0(\mathrm{mod,,}100),(1)\<br>87x\equiv3(\mathrm{mod,,}100),(2)<br>\end{cases}<br>$$</p>
+<p>$$<br>(1)-(2)得,13x\equiv97(\mathrm{mod,,}100),(3)\<br>(2)-6\times(-3)得,9x\equiv 21(\mathrm{mod,,}100),(4)\<br>(3)-(4)得,4x\equiv 76(\mathrm{mod,,}100)\<br>(4)-2\times(5)得，x\equiv69(\mathrm{mod,,}100)<br>$$</p>
+<h2 id="简化剩余系"><a href="#简化剩余系" class="headerlink" title="简化剩余系"></a>简化剩余系</h2><h5 id="所有的-n-满足-0-lt-n-leq-m-n-m-x3D-1-构成了一个模-m-的简化剩余系。-phi-m-表示-n-的个数。"><a href="#所有的-n-满足-0-lt-n-leq-m-n-m-x3D-1-构成了一个模-m-的简化剩余系。-phi-m-表示-n-的个数。" class="headerlink" title="所有的 n 满足 $0&lt;n\leq m,(n, m)&#x3D;1$ 构成了一个模 m 的简化剩余系。$\phi(m)$ 表示 n 的个数。"></a>所有的 n 满足 $0&lt;n\leq m,(n, m)&#x3D;1$ 构成了一个模 m 的简化剩余系。$\phi(m)$ 表示 n 的个数。</h5><h2 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h2><p>$$<br>\phi(m)&#x3D;m\prod_{p|m}(1-\frac1p)<br>$$</p>
+<h3 id="欧拉函数证明"><a href="#欧拉函数证明" class="headerlink" title="欧拉函数证明"></a>欧拉函数证明</h3><p>$$<br>积性函数性质 \phi(mn)&#x3D;\phi(m)\phi(n)和唯一分解定理 n&#x3D;p_1^{a_1}p_2^{a_2}…p_k^{a_k}\<br>因此\phi(n)&#x3D;\phi(p_1^{a_1})…\phi(p_k^{a_k}),\对于任意一项都有<br>\bbox[yellow]{\phi(p_s^{a_s})&#x3D;p_s^{a_s}-p_s^{(a_s-1)},(1)}\<br>试证(1):从1到p_s^{a_s}共有p_s^{a_s}个数字，不互质的数有\bbox[yellow]{p_s,2p_s,…,p_s^{a_s-1}}共{p_s^{a_s-1}}项\<br>则互质的数有\bbox[yellow]{p_s^{a_s}-p_s^{a_s-1}}个，即\phi(p_s^{a_s})&#x3D;p_s^{a_s}-p_s^{a_s-1}&#x3D;p_s^{a_s}(1-\frac1{p_s})\<br>可以把该式子推广到质数分解的每一项因子，则有:\<br>\phi(n)&#x3D;\phi(p_1^{a_1})…\phi(p_k^{a_k})<br>&#x3D;p_1^{a_1}…p_k^{a_k}*(1-\frac1{p_1})…(1-\frac1{p_k})&#x3D;n\prod_{i&#x3D;1}^{k}(1-\frac1{p_i})<br>$$</p>
+<h3 id="欧拉函数板子"><a href="#欧拉函数板子" class="headerlink" title="欧拉函数板子"></a>欧拉函数板子</h3><figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">phi</span> <span class="params">(ll n)</span> </span>&#123;</span><br><span class="line">    ll ans = n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i*i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (n % i == <span class="number">0</span>) &#123;</span><br><span class="line">            ans = ans / i * (i - <span class="number">1</span>); <span class="comment">//*(1-1/i)</span></span><br><span class="line">            <span class="keyword">while</span> (n % i == <span class="number">0</span>)  n /= i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (n &gt; <span class="number">1</span>)  ans = ans / n * (n - <span class="number">1</span>); <span class="comment">//还剩下就再乘</span></span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h2><p>欧拉函数模板 <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/12/problem/489">http://oj.daimayuan.top/course/12/problem/489</a></p>
 
     </div>
 
@@ -317,7 +332,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E8%AE%BA2%EF%BC%9A%E5%90%8C%E4%BD%99%EF%BC%8C%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%EF%BC%8C%E9%80%86%E5%85%83"><span class="nav-number">1.</span> <span class="nav-text">数论2：同余，欧拉函数，逆元</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E8%AE%BA2%EF%BC%9A%E5%90%8C%E4%BD%99%EF%BC%8C%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%EF%BC%8C%E9%80%86%E5%85%83"><span class="nav-number">1.</span> <span class="nav-text">数论2：同余，欧拉函数，逆元</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E4%BD%99"><span class="nav-number">1.1.</span> <span class="nav-text">同余</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B"><span class="nav-number">1.2.</span> <span class="nav-text">线性同余方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8C%96%E5%89%A9%E4%BD%99%E7%B3%BB"><span class="nav-number">1.3.</span> <span class="nav-text">简化剩余系</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%80%E6%9C%89%E7%9A%84-n-%E6%BB%A1%E8%B6%B3-0-lt-n-leq-m-n-m-x3D-1-%E6%9E%84%E6%88%90%E4%BA%86%E4%B8%80%E4%B8%AA%E6%A8%A1-m-%E7%9A%84%E7%AE%80%E5%8C%96%E5%89%A9%E4%BD%99%E7%B3%BB%E3%80%82-phi-m-%E8%A1%A8%E7%A4%BA-n-%E7%9A%84%E4%B8%AA%E6%95%B0%E3%80%82"><span class="nav-number">1.3.0.0.1.</span> <span class="nav-text">所有的 n 满足 $0&lt;n\leq m,(n, m)&#x3D;1$ 构成了一个模 m 的简化剩余系。$\phi(m)$ 表示 n 的个数。</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.</span> <span class="nav-text">欧拉函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%E8%AF%81%E6%98%8E"><span class="nav-number">1.4.1.</span> <span class="nav-text">欧拉函数证明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%E6%9D%BF%E5%AD%90"><span class="nav-number">1.4.2.</span> <span class="nav-text">欧拉函数板子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%A0%E9%A2%98"><span class="nav-number">1.5.</span> <span class="nav-text">习题</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
