@@ -28,7 +28,7 @@
 <meta property="og:description" content="公式挂掉太丑了就看这里">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-14T08:10:10.000Z">
-<meta property="article:modified_time" content="2022-10-14T14:22:03.116Z">
+<meta property="article:modified_time" content="2022-10-15T07:19:12.815Z">
 <meta property="article:author" content="cting">
 <meta property="article:tag" content="数论">
 <meta name="twitter:card" content="summary">
@@ -208,10 +208,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-10-14 16:10:10 / 修改时间：22:22:03" itemprop="dateCreated datePublished" datetime="2022-10-14T16:10:10+08:00">2022-10-14</time>
+              <time title="创建时间：2022-10-14 16:10:10" itemprop="dateCreated datePublished" datetime="2022-10-14T16:10:10+08:00">2022-10-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-15 15:19:12" itemprop="dateModified" datetime="2022-10-15T15:19:12+08:00">2022-10-15</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -243,6 +249,13 @@
 <p>对 $mx\equiv 0(\mathrm{mod,,}m),ax\equiv b(\mathrm{mod,,}m)$ 辗转相除</p>
 <p>还有一种计算方法比较好理解（来自dls）<br>$$<br>\begin{cases}<br>100x\equiv 0(\mathrm{mod,,}100),(1)\<br>87x\equiv3(\mathrm{mod,,}100),(2)<br>\end{cases}<br>$$</p>
 <p>$$<br>(1)-(2)得,13x\equiv97(\mathrm{mod,,}100),(3)\<br>(2)-6\times(-3)得,9x\equiv 21(\mathrm{mod,,}100),(4)\<br>(3)-(4)得,4x\equiv 76(\mathrm{mod,,}100)\<br>(4)-2\times(5)得，x\equiv69(\mathrm{mod,,}100)<br>$$</p>
+<p>解线性同余方程板子：</p>
+<figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 求 a * x = b (mod m) 的解</span></span><br><span class="line"><span class="function">ll <span class="title">modequ</span><span class="params">(ll a, ll b, ll m)</span> </span>&#123;</span><br><span class="line">    ll x, y;</span><br><span class="line">    ll d = <span class="built_in">exgcd</span>(a, m, x, y);</span><br><span class="line">    <span class="keyword">if</span> (b % d != <span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    m /= d; a /= d; b /= d;</span><br><span class="line">    x = x * b % m;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span>) x += m;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
 <h2 id="简化剩余系"><a href="#简化剩余系" class="headerlink" title="简化剩余系"></a>简化剩余系</h2><h5 id="所有的-n-满足-0-lt-n-leq-m-n-m-x3D-1-构成了一个模-m-的简化剩余系。-phi-m-表示-n-的个数。"><a href="#所有的-n-满足-0-lt-n-leq-m-n-m-x3D-1-构成了一个模-m-的简化剩余系。-phi-m-表示-n-的个数。" class="headerlink" title="所有的 n 满足 $0&lt;n\leq m,(n, m)&#x3D;1$ 构成了一个模 m 的简化剩余系。$\phi(m)$ 表示 n 的个数。"></a>所有的 n 满足 $0&lt;n\leq m,(n, m)&#x3D;1$ 构成了一个模 m 的简化剩余系。$\phi(m)$ 表示 n 的个数。</h5><h2 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h2><p>$$<br>\phi(m)&#x3D;m\prod_{p|m}(1-\frac1p)<br>$$</p>
 <h3 id="欧拉函数证明"><a href="#欧拉函数证明" class="headerlink" title="欧拉函数证明"></a>欧拉函数证明</h3><p>$$<br>积性函数性质 \phi(mn)&#x3D;\phi(m)\phi(n)和唯一分解定理 n&#x3D;p_1^{a_1}p_2^{a_2}…p_k^{a_k}\<br>因此\phi(n)&#x3D;\phi(p_1^{a_1})…\phi(p_k^{a_k}),\对于任意一项都有<br>\bbox[yellow]{\phi(p_s^{a_s})&#x3D;p_s^{a_s}-p_s^{(a_s-1)},(1)}\<br>试证(1):从1到p_s^{a_s}共有p_s^{a_s}个数字，不互质的数有\bbox[yellow]{p_s,2p_s,…,p_s^{a_s-1}}共{p_s^{a_s-1}}项\<br>则互质的数有\bbox[yellow]{p_s^{a_s}-p_s^{a_s-1}}个，即\phi(p_s^{a_s})&#x3D;p_s^{a_s}-p_s^{a_s-1}&#x3D;p_s^{a_s}(1-\frac1{p_s})\<br>可以把该式子推广到质数分解的每一项因子，则有:\<br>\phi(n)&#x3D;\phi(p_1^{a_1})…\phi(p_k^{a_k})<br>&#x3D;p_1^{a_1}…p_k^{a_k}*(1-\frac1{p_1})…(1-\frac1{p_k})&#x3D;n\prod_{i&#x3D;1}^{k}(1-\frac1{p_i})<br>$$</p>
 <h3 id="欧拉函数板子"><a href="#欧拉函数板子" class="headerlink" title="欧拉函数板子"></a>欧拉函数板子</h3><figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">phi</span> <span class="params">(ll n)</span> </span>&#123;</span><br><span class="line">    ll ans = n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i*i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (n % i == <span class="number">0</span>) &#123;</span><br><span class="line">            ans = ans / i * (i - <span class="number">1</span>); <span class="comment">//*(1-1/i)</span></span><br><span class="line">            <span class="keyword">while</span> (n % i == <span class="number">0</span>)  n /= i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (n &gt; <span class="number">1</span>)  ans = ans / n * (n - <span class="number">1</span>); <span class="comment">//还剩下就再乘</span></span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -256,17 +269,25 @@
 <p>根据同余公式三  $ka\equiv ka’(\mathrm{mod,,} m)\rightarrow a\equiv a’(\mathrm{mod,,}  \frac m{(m,k)})$</p>
 <p>则有<br>$$<br>\prod_{i&#x3D;1}^{\phi(n)}k_i\equiv a^{\phi(n)}\prod_{i&#x3D;1}^{\phi(n)}k_i(\mathrm{mod,,}n)\rightarrow<br>1\equiv a^{\phi(n)}(\mathrm{mod,,}n)<br>$$</p>
 <h2 id="逆元"><a href="#逆元" class="headerlink" title="逆元"></a>逆元</h2><p>$ax\equiv1(\mathrm{mod,,}m)$，称 $x$ 为 $a$ 的逆元，记作 $a^{-1}$</p>
-<h3 id="求逆元"><a href="#求逆元" class="headerlink" title="求逆元"></a>求逆元</h3><p>素数：</p>
+<h3 id="快速幂求逆元模板"><a href="#快速幂求逆元模板" class="headerlink" title="快速幂求逆元模板"></a>快速幂求逆元模板</h3><p>素数：</p>
 <p>$a^{p-1}\equiv1(\mathrm{mod},,p)\rightarrow aa^{p-2}\equiv1(\mathrm{mod,,p)\rightarrow a^{p-2}\equiv a^{-1}(\mathrm{mod},,p})$</p>
-<p>非素数：</p>
+<figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">qmi</span><span class="params">(ll a, ll k, ll p)</span> </span>&#123;</span><br><span class="line">	ll ans = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (k) &#123;</span><br><span class="line">		<span class="keyword">if</span> (k &amp; <span class="number">1</span>)	ans = ans * a % p;</span><br><span class="line">		k &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">		a = a * a % p;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//a mod p 的逆元为 qmi (a, p - 2, p)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="扩展欧几里得求逆元模板"><a href="#扩展欧几里得求逆元模板" class="headerlink" title="扩展欧几里得求逆元模板"></a>扩展欧几里得求逆元模板</h3><p>非素数：</p>
 <p>$a^{\phi(m)}\equiv1(\mathrm{mod,,}m)\rightarrow a^{\phi(m)-1}\equiv a^{-1}(\mathrm{mod,,}m)$</p>
-<h4 id="x3D-x3D-求逆元结论（1-n）-x3D-x3D"><a href="#x3D-x3D-求逆元结论（1-n）-x3D-x3D" class="headerlink" title="&#x3D;&#x3D;求逆元结论（1 - n）&#x3D;&#x3D;"></a>&#x3D;&#x3D;<strong>求逆元结论（1 - n）</strong>&#x3D;&#x3D;</h4><p><code>inv[i] = (p - p / i) * inv[p % i] % p</code></p>
+<figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> d = <span class="built_in">exgcd</span>(a, p, x, y);</span><br><span class="line"><span class="keyword">if</span> (d == <span class="number">1</span>) 	cout &lt;&lt; (<span class="number">1ll</span> * x + p) % p &lt;&lt; endl;</span><br><span class="line"><span class="keyword">else</span> 	<span class="built_in">puts</span>(<span class="string">&quot;impossible&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="线性递推求逆元（1-n）"><a href="#线性递推求逆元（1-n）" class="headerlink" title="线性递推求逆元（1 - n）"></a>线性递推求逆元（1 - n）</h3><p><code>inv[i] = (p - p / i) * inv[p % i] % p</code></p>
 <p>证明（相当于等式变形）：<br>$$<br>p&#x3D; (p,,\mathrm{mod,,}i)+\lfloor\frac pi\rfloor\times i\两边同除p,得,<br>0\equiv ((p,,\mathrm{mod,,}i)+\lfloor\frac pi\rfloor\times i),,(\mathrm{mod,,}p)\移项+同除,得,<br>-\lfloor\frac pi\rfloor \equiv ((p,,\mathrm{mod,,}i)\times i^{-1}),,(\mathrm{mod,,}p)\<br>i^{-1}\equiv -\lfloor\frac pi\rfloor \times (p\mathrm{,,mod,,}i)^{-1},,(\mathrm{mod,,}p)\<br>右边就是负数取模,加上个p就得证 i^{-1}\equiv p-\lfloor\frac pi\rfloor \times (p\mathrm{,,mod,,}i)^{-1},,(\mathrm{mod,,}p)<br>$$<br>板子：</p>
 <figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">inv[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    inv[i] = (p - p / i) * inv[p % i] % p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="另一种求法"><a href="#另一种求法" class="headerlink" title="另一种求法"></a>另一种求法</h4><p>$$<br>令s_i&#x3D;\prod_{j&#x3D;1}^ia_j,,,t_i&#x3D;\prod_{j&#x3D;1}^i a_j^{-1}，则有a_i^{-1}&#x3D;s_{i-1},t_i<br>$$<br>然后利用 $s_1\rightarrow s_2\rightarrow…\rightarrow s_n \rightarrow t_n\rightarrow…\rightarrow t_2\rightarrow t_1$  求出每一项 $s_i,t_i$，从而求得 $a_i$ </p>
+<h3 id="前缀乘积qiu’ni’yuan"><a href="#前缀乘积qiu’ni’yuan" class="headerlink" title="前缀乘积qiu’ni’yuan"></a>前缀乘积qiu’ni’yuan</h3><p>$$<br>令s_i&#x3D;\prod_{j&#x3D;1}^ia_j,,,t_i&#x3D;\prod_{j&#x3D;1}^i a_j^{-1}，则有a_i^{-1}&#x3D;s_{i-1},t_i<br>$$<br>然后利用 $s_1\rightarrow s_2\rightarrow…\rightarrow s_n \rightarrow t_n\rightarrow…\rightarrow t_2\rightarrow t_1$  求出每一项 $s_i,t_i$，从而求得 $a_i$ </p>
 <p>其中， $s_n \rightarrow t_n$  这一步可以通过 $exgcd$ 求逆元得出 </p>
 <p>&#x3D;&#x3D;利用前缀乘积，<strong>正反正</strong> for 三遍即得&#x3D;&#x3D;</p>
 <p>板子：</p>
@@ -274,8 +295,7 @@
 
 
 
-
-
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>求逆元的三种方法：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/100587745">https://zhuanlan.zhihu.com/p/100587745</a></p>
 <h2 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h2><p>欧拉函数模板题 <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/12/problem/489">http://oj.daimayuan.top/course/12/problem/489</a></p>
 <p>求逆元1 <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/12/problem/490">http://oj.daimayuan.top/course/12/problem/490</a></p>
 <p>求逆元2 <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/12/problem/491">http://oj.daimayuan.top/course/12/problem/491</a></p>
@@ -300,7 +320,10 @@
     <a href="/2022/10/14/Codeforces-Round-827-Div-4/" rel="prev" title="Codeforces Round 827 (Div. 4)">
       <i class="fa fa-chevron-left"></i> Codeforces Round 827 (Div. 4)
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/10/15/%E6%95%B0%E8%AE%BA3%EF%BC%9A%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86/" rel="next" title="数论3：中国剩余定理">
+      数论3：中国剩余定理 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -359,7 +382,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E8%AE%BA2%EF%BC%9A%E5%90%8C%E4%BD%99%EF%BC%8C%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%EF%BC%8C%E9%80%86%E5%85%83"><span class="nav-number">1.</span> <span class="nav-text">数论2：同余，欧拉函数，逆元</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E4%BD%99"><span class="nav-number">1.1.</span> <span class="nav-text">同余</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B"><span class="nav-number">1.2.</span> <span class="nav-text">线性同余方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8C%96%E5%89%A9%E4%BD%99%E7%B3%BB"><span class="nav-number">1.3.</span> <span class="nav-text">简化剩余系</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%80%E6%9C%89%E7%9A%84-n-%E6%BB%A1%E8%B6%B3-0-lt-n-leq-m-n-m-x3D-1-%E6%9E%84%E6%88%90%E4%BA%86%E4%B8%80%E4%B8%AA%E6%A8%A1-m-%E7%9A%84%E7%AE%80%E5%8C%96%E5%89%A9%E4%BD%99%E7%B3%BB%E3%80%82-phi-m-%E8%A1%A8%E7%A4%BA-n-%E7%9A%84%E4%B8%AA%E6%95%B0%E3%80%82"><span class="nav-number">1.3.0.0.1.</span> <span class="nav-text">所有的 n 满足 $0&lt;n\leq m,(n, m)&#x3D;1$ 构成了一个模 m 的简化剩余系。$\phi(m)$ 表示 n 的个数。</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.</span> <span class="nav-text">欧拉函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%E8%AF%81%E6%98%8E"><span class="nav-number">1.4.1.</span> <span class="nav-text">欧拉函数证明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%E6%9D%BF%E5%AD%90"><span class="nav-number">1.4.2.</span> <span class="nav-text">欧拉函数板子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86"><span class="nav-number">1.5.</span> <span class="nav-text">欧拉定理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86%E8%AF%81%E6%98%8E"><span class="nav-number">1.5.1.</span> <span class="nav-text">欧拉定理证明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%86%E5%85%83"><span class="nav-number">1.6.</span> <span class="nav-text">逆元</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E9%80%86%E5%85%83"><span class="nav-number">1.6.1.</span> <span class="nav-text">求逆元</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#x3D-x3D-%E6%B1%82%E9%80%86%E5%85%83%E7%BB%93%E8%AE%BA%EF%BC%881-n%EF%BC%89-x3D-x3D"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">&#x3D;&#x3D;求逆元结论（1 - n）&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%A6%E4%B8%80%E7%A7%8D%E6%B1%82%E6%B3%95"><span class="nav-number">1.6.1.2.</span> <span class="nav-text">另一种求法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%A0%E9%A2%98"><span class="nav-number">1.7.</span> <span class="nav-text">习题</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E8%AE%BA2%EF%BC%9A%E5%90%8C%E4%BD%99%EF%BC%8C%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%EF%BC%8C%E9%80%86%E5%85%83"><span class="nav-number">1.</span> <span class="nav-text">数论2：同余，欧拉函数，逆元</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E4%BD%99"><span class="nav-number">1.1.</span> <span class="nav-text">同余</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B"><span class="nav-number">1.2.</span> <span class="nav-text">线性同余方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8C%96%E5%89%A9%E4%BD%99%E7%B3%BB"><span class="nav-number">1.3.</span> <span class="nav-text">简化剩余系</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%80%E6%9C%89%E7%9A%84-n-%E6%BB%A1%E8%B6%B3-0-lt-n-leq-m-n-m-x3D-1-%E6%9E%84%E6%88%90%E4%BA%86%E4%B8%80%E4%B8%AA%E6%A8%A1-m-%E7%9A%84%E7%AE%80%E5%8C%96%E5%89%A9%E4%BD%99%E7%B3%BB%E3%80%82-phi-m-%E8%A1%A8%E7%A4%BA-n-%E7%9A%84%E4%B8%AA%E6%95%B0%E3%80%82"><span class="nav-number">1.3.0.0.1.</span> <span class="nav-text">所有的 n 满足 $0&lt;n\leq m,(n, m)&#x3D;1$ 构成了一个模 m 的简化剩余系。$\phi(m)$ 表示 n 的个数。</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.</span> <span class="nav-text">欧拉函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%E8%AF%81%E6%98%8E"><span class="nav-number">1.4.1.</span> <span class="nav-text">欧拉函数证明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%E6%9D%BF%E5%AD%90"><span class="nav-number">1.4.2.</span> <span class="nav-text">欧拉函数板子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86"><span class="nav-number">1.5.</span> <span class="nav-text">欧拉定理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86%E8%AF%81%E6%98%8E"><span class="nav-number">1.5.1.</span> <span class="nav-text">欧拉定理证明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%86%E5%85%83"><span class="nav-number">1.6.</span> <span class="nav-text">逆元</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%B9%82%E6%B1%82%E9%80%86%E5%85%83%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.6.1.</span> <span class="nav-text">快速幂求逆元模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E6%B1%82%E9%80%86%E5%85%83%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.6.2.</span> <span class="nav-text">扩展欧几里得求逆元模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E9%80%92%E6%8E%A8%E6%B1%82%E9%80%86%E5%85%83%EF%BC%881-n%EF%BC%89"><span class="nav-number">1.6.3.</span> <span class="nav-text">线性递推求逆元（1 - n）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BC%80%E4%B9%98%E7%A7%AFqiu%E2%80%99ni%E2%80%99yuan"><span class="nav-number">1.6.4.</span> <span class="nav-text">前缀乘积qiu’ni’yuan</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">1.7.</span> <span class="nav-text">Reference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%A0%E9%A2%98"><span class="nav-number">1.8.</span> <span class="nav-text">习题</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -375,7 +398,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
